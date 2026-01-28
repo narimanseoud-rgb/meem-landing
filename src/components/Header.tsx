@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import meemLogo from "@/assets/meem-logo.png";
+import meemTextLogo from "@/assets/meem-text-logo.png";
 
 const navLinks = [
   { label: "About Us", href: "#about" },
@@ -15,7 +17,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/20"
+      className="fixed top-0 left-0 right-0 z-50"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -28,12 +30,16 @@ const Header = () => {
             className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
-            </div>
-            <span className="text-lg font-bold text-foreground hidden sm:block">
-              Meme Media Hub
-            </span>
+            <img 
+              src={meemLogo} 
+              alt="Meme Media Hub Logo" 
+              className="h-10 w-auto"
+            />
+            <img 
+              src={meemTextLogo} 
+              alt="Meme Media Hub" 
+              className="h-6 w-auto hidden sm:block"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -42,7 +48,7 @@ const Header = () => {
               <motion.a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.4 }}
@@ -80,7 +86,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <motion.nav
-          className={`md:hidden overflow-hidden ${mobileMenuOpen ? "pb-6" : ""}`}
+          className={`md:hidden overflow-hidden ${mobileMenuOpen ? "pb-6 bg-background/90 backdrop-blur-md rounded-b-xl" : ""}`}
           initial={false}
           animate={{
             height: mobileMenuOpen ? "auto" : 0,
@@ -88,7 +94,7 @@ const Header = () => {
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <div className="flex flex-col gap-4 pt-4 border-t border-border/20">
+          <div className="flex flex-col gap-4 pt-4 border-t border-border/20 px-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}

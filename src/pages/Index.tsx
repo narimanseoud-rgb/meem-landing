@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
@@ -9,12 +10,21 @@ import Footer from "@/components/sections/Footer";
 const Index = () => {
   return (
     <main className="dark">
+      <Header />
       <Hero />
-      <About />
-      <Services />
-      <Portfolio />
+      <section id="about">
+        <About />
+      </section>
+      <section id="services">
+        <Services />
+      </section>
+      <section id="portfolio">
+        <Portfolio />
+      </section>
       <TrustedBy />
-      <Contact />
+      <section id="contact">
+        <Contact />
+      </section>
       <Footer />
     </main>
   );

@@ -1,0 +1,81 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+
+const socialLinks = [
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Youtube, href: "#", label: "YouTube" },
+];
+
+const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <footer ref={ref} className="relative py-16 bg-background overflow-hidden">
+      {/* Animated accent line */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: 1 } : {}}
+        transition={{ duration: 1, ease: "easeOut" }}
+      />
+
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Brand */}
+          <motion.div
+            className="flex items-center gap-3"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">M</span>
+            </div>
+            <span className="text-xl font-bold text-foreground">
+              Meme Media Hub
+            </span>
+          </motion.div>
+
+          {/* Social links */}
+          <motion.div
+            className="flex items-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                className="w-10 h-10 rounded-full bg-card border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
+                aria-label={social.label}
+                whileHover={{ scale: 1.1, y: -2 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+              >
+                <social.icon className="w-4 h-4" />
+              </motion.a>
+            ))}
+          </motion.div>
+
+          {/* Copyright */}
+          <motion.p
+            className="text-sm text-muted-foreground"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            © 2024 Meme Media Hub. All rights reserved.
+          </motion.p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

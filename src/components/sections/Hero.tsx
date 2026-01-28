@@ -1,10 +1,19 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
+import heroOverlay from "@/assets/hero-overlay.png";
+
+const socialLinks = [
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Mail, href: "mailto:hello@mememediahub.com", label: "Email" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Phone, href: "tel:+1234567890", label: "Phone" },
+];
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-16 md:pt-20">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-background" />
       
@@ -39,12 +48,12 @@ const Hero = () => {
       
       {/* Floating geometric shapes */}
       <motion.div
-        className="absolute top-20 right-20 w-16 h-16 border-2 border-primary/40 rotate-45"
+        className="absolute top-32 right-20 w-16 h-16 border-2 border-primary/40 rotate-45"
         animate={{ y: [0, -20, 0], rotate: [45, 90, 45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-32 left-16 w-12 h-12 bg-primary/30 rounded-full"
+        className="absolute bottom-48 left-16 w-12 h-12 bg-primary/30 rounded-full"
         animate={{ y: [0, -15, 0], scale: [1, 1.2, 1] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
@@ -54,13 +63,27 @@ const Hero = () => {
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-10 w-8 h-8 bg-primary/40"
+        className="absolute bottom-1/3 right-10 w-8 h-8 bg-primary/40"
         animate={{ y: [0, -18, 0], rotate: [0, 180, 360] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
       
-      {/* Gradient overlay - black at bottom, transparent at top */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+      {/* Orange to transparent gradient overlay at bottom */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+        style={{
+          background: "linear-gradient(to top, hsl(32, 100%, 50%) 0%, transparent 100%)",
+        }}
+      />
+      
+      {/* Uploaded overlay image at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+        <img 
+          src={heroOverlay} 
+          alt="" 
+          className="w-full h-auto object-cover mix-blend-screen"
+        />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -111,22 +134,48 @@ const Hero = () => {
           <Button
             size="lg"
             className="group text-lg px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/25 transition-all duration-300"
+            asChild
           >
-            Work With Us
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <a href="#contact">
+              Work With Us
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
         </motion.div>
       </div>
       
+      {/* Social links - bottom right */}
+      <motion.div
+        className="absolute bottom-8 right-6 md:right-10 z-20 flex flex-col gap-3"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1, duration: 0.6 }}
+      >
+        {socialLinks.map((social, index) => (
+          <motion.a
+            key={social.label}
+            href={social.href}
+            className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-card transition-all duration-300"
+            aria-label={social.label}
+            whileHover={{ scale: 1.15, x: -5 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 1.1 + index * 0.1 }}
+          >
+            <social.icon className="w-4 h-4" />
+          </motion.a>
+        ))}
+      </motion.div>
+      
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
       >
         <motion.div
-          className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center"
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >

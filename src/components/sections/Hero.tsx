@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
 import heroOverlay from "@/assets/hero-overlay.png";
+import meemTextLogo from "@/assets/meem-text-logo.png";
 
 const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
@@ -16,6 +17,14 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-16 md:pt-20">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-background" />
+      
+      {/* Full-height orange to transparent gradient overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to top, hsl(32, 100%, 50%) 0%, hsl(32, 100%, 50%, 0.6) 30%, hsl(32, 100%, 50%, 0.2) 60%, transparent 100%)",
+        }}
+      />
       
       {/* Animated gradient orbs */}
       <motion.div
@@ -67,17 +76,19 @@ const Hero = () => {
         animate={{ y: [0, -18, 0], rotate: [0, 180, 360] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
-      
-      {/* Orange to transparent gradient overlay at bottom */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
-        style={{
-          background: "linear-gradient(to top, hsl(32, 100%, 50%) 0%, transparent 100%)",
-        }}
+      <motion.div
+        className="absolute top-1/2 right-1/3 w-6 h-6 border border-foreground/20 rounded-full"
+        animate={{ y: [0, -12, 0], x: [0, 10, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+      />
+      <motion.div
+        className="absolute bottom-1/2 left-1/3 w-10 h-10 border-2 border-primary/30"
+        animate={{ rotate: [0, 90, 180, 270, 360] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
       />
       
       {/* Uploaded overlay image at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10">
         <img 
           src={heroOverlay} 
           alt="" 
@@ -87,19 +98,21 @@ const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
+        {/* Text logo above headline */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-8"
         >
-          <motion.span
-            className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/30 rounded-full bg-primary/10"
-            initial={{ opacity: 0, scale: 0.9 }}
+          <motion.img
+            src={meemTextLogo}
+            alt="Meme Media Hub"
+            className="h-8 md:h-10 lg:h-12 w-auto mx-auto"
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            Culture-First Marketing Agency
-          </motion.span>
+            transition={{ delay: 0.2, duration: 0.6 }}
+          />
         </motion.div>
         
         <motion.h1
@@ -108,18 +121,46 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
         >
-          <span className="text-foreground">We Turn </span>
-          <span className="text-primary">Culture</span>
+          <motion.span 
+            className="text-foreground inline-block"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            We Turn{" "}
+          </motion.span>
+          <motion.span 
+            className="text-primary inline-block"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            Culture
+          </motion.span>
           <br />
-          <span className="text-foreground">Into </span>
-          <span className="text-primary">Growth</span>
+          <motion.span 
+            className="text-foreground inline-block"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            Into{" "}
+          </motion.span>
+          <motion.span 
+            className="text-primary inline-block"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            Growth
+          </motion.span>
         </motion.h1>
         
         <motion.p
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         >
           We're not your average agency. We speak internet, breathe memes, 
           and craft campaigns that break through the noise. Welcome to marketing 
@@ -127,9 +168,9 @@ const Hero = () => {
         </motion.p>
         
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 20, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
         >
           <Button
             size="lg"
@@ -149,7 +190,7 @@ const Hero = () => {
         className="absolute bottom-8 right-6 md:right-10 z-20 flex flex-col gap-3"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.6 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
       >
         {socialLinks.map((social, index) => (
           <motion.a
@@ -160,7 +201,7 @@ const Hero = () => {
             whileHover={{ scale: 1.15, x: -5 }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: 1.1 + index * 0.1 }}
+            transition={{ duration: 0.4, delay: 1.3 + index * 0.1 }}
           >
             <social.icon className="w-4 h-4" />
           </motion.a>
@@ -172,7 +213,7 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
       >
         <motion.div
           className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center"

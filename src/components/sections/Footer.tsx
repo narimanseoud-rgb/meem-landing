@@ -1,6 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import meemLogo from "@/assets/meem-logo.png";
+import meemTextLogo from "@/assets/meem-text-logo.png";
 
 const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
@@ -32,12 +34,16 @@ const Footer = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">
-              Meme Media Hub
-            </span>
+            <img 
+              src={meemLogo} 
+              alt="Meme Media Hub Logo" 
+              className="h-10 w-auto"
+            />
+            <img 
+              src={meemTextLogo} 
+              alt="Meme Media Hub" 
+              className="h-6 w-auto"
+            />
           </motion.div>
 
           {/* Social links */}
@@ -70,7 +76,7 @@ const Footer = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            © 2024 Meme Media Hub. All rights reserved.
+            © 2026 Meme Media Hub. All rights reserved.
           </motion.p>
         </div>
       </div>

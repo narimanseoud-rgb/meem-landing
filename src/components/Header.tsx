@@ -25,22 +25,23 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.a
+          <a
             href="#"
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.02 }}
+            className="flex items-center gap-3 group"
           >
-            <img 
+            <motion.img 
               src={meemLogo} 
               alt="Meme Media Hub Logo" 
               className="h-10 w-auto"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
             />
             <img 
               src={meemTextLogo} 
               alt="Meme Media Hub" 
               className="h-6 w-auto hidden sm:block"
             />
-          </motion.a>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -70,7 +71,7 @@ const Header = () => {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/25 transition-all duration-300"
             >
-              <a href="#contact">Get In Touch</a>
+              <a href="#contact">Contact Us</a>
             </Button>
           </motion.div>
 
@@ -110,7 +111,7 @@ const Header = () => {
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
             >
               <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                Get In Touch
+                Contact Us
               </a>
             </Button>
           </div>

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
+import { Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
 import heroOverlay from "@/assets/hero-overlay.png";
 import meemTextLogo from "@/assets/meem-text-logo.png";
 
@@ -115,46 +114,6 @@ const Hero = () => {
           />
         </motion.div>
         
-        <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-        >
-          <motion.span 
-            className="text-foreground inline-block"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            We Turn{" "}
-          </motion.span>
-          <motion.span 
-            className="text-primary inline-block"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            Culture
-          </motion.span>
-          <br />
-          <motion.span 
-            className="text-foreground inline-block"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            Into{" "}
-          </motion.span>
-          <motion.span 
-            className="text-primary inline-block"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
-            Growth
-          </motion.span>
-        </motion.h1>
         
         <motion.p
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
@@ -167,29 +126,13 @@ const Hero = () => {
           that actually moves the culture.
         </motion.p>
         
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
-        >
-          <Button
-            size="lg"
-            className="group text-lg px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/25 transition-all duration-300"
-            asChild
-          >
-            <a href="#contact">
-              Work With Us
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
-        </motion.div>
       </div>
       
-      {/* Social links - bottom right */}
+      {/* Social links - bottom center horizontal */}
       <motion.div
-        className="absolute bottom-8 right-6 md:right-10 z-20 flex flex-col gap-3"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-row gap-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
       >
         {socialLinks.map((social, index) => (
@@ -198,9 +141,9 @@ const Hero = () => {
             href={social.href}
             className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-card transition-all duration-300"
             aria-label={social.label}
-            whileHover={{ scale: 1.15, x: -5 }}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.15, y: -5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 1.3 + index * 0.1 }}
           >
             <social.icon className="w-4 h-4" />

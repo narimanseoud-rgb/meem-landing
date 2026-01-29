@@ -56,11 +56,11 @@ const ScrollingWords = ({ words, direction }: { words: string[]; direction: "lef
       >
         {duplicatedWords.map((word, index) => (
           <div key={`word-${index}`} className="flex items-center gap-4 shrink-0">
-            <span className="text-3xl md:text-5xl font-black text-primary/20 tracking-widest">
+            <span className="text-4xl md:text-6xl font-black text-primary/40 tracking-widest">
               {word}
             </span>
             {index < duplicatedWords.length - 1 && (
-              <span className="text-3xl md:text-5xl text-primary/20">•</span>
+              <span className="text-4xl md:text-6xl text-primary/40">•</span>
             )}
           </div>
         ))}
@@ -72,13 +72,6 @@ const ScrollingWords = ({ words, direction }: { words: string[]; direction: "lef
 const TrustedByScroll = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const duplicatedBrands = [...brands, ...brands];
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const logosX = useTransform(scrollYProgress, [0, 1], [0, -400]);
 
   return (
     <section ref={containerRef} className="py-16 overflow-hidden bg-background">
@@ -97,8 +90,8 @@ const TrustedByScroll = () => {
       {/* Top scrolling words */}
       <ScrollingWords words={topScrollingWords} direction="left" />
       
-      {/* Logos Row */}
-      <div className="relative my-6">
+      {/* Logos Row - Auto-animating marquee */}
+      <div className="relative my-6 overflow-hidden">
         {/* White gradients on sides */}
         <div 
           className="absolute left-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
@@ -111,7 +104,15 @@ const TrustedByScroll = () => {
         
         <motion.div
           className="flex gap-12 items-center px-8"
-          style={{ x: logosX }}
+          animate={{ x: [0, -120 * brands.length] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 25,
+              ease: "linear"
+            }
+          }}
         >
           {duplicatedBrands.map((brand, index) => (
             <motion.div

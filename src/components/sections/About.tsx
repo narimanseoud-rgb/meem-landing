@@ -114,7 +114,7 @@ const About = () => {
                 <div className="w-16 h-16 rounded-lg bg-foreground/10 flex items-center justify-center mb-4 group-hover:bg-foreground/20 transition-colors">
                   <feature.icon className="w-8 h-8 text-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-foreground">
+                <h3 className="text-lg font-semibold mb-2 text-background">
                   {feature.title}
                 </h3>
                 <p className="text-sm text-foreground/70">

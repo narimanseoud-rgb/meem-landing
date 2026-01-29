@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
-import heroOverlay from "@/assets/hero-overlay.png";
+import meemCover from "@/assets/meem-cover.png";
 import meemTextLogo from "@/assets/meem-text-logo.png";
 import heroVideo from "@/assets/hero-video.mp4";
 import HeroFloatingCards from "./HeroFloatingCards";
@@ -114,9 +114,9 @@ const Hero = () => {
       ease: "linear"
     }} />
 
-      {/* Uploaded overlay image at bottom */}
+      {/* Overlay logo at bottom */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10">
-        <img src={heroOverlay} alt="" className="w-full h-auto object-cover mix-blend-screen opacity-60" />
+        <img src={meemCover} alt="" className="w-full h-auto object-cover" />
       </div>
 
       {/* Floating cards on left side */}

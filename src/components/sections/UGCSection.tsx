@@ -1,0 +1,147 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Check, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const stats = [
+  "350+ UGC Pieces Created – We create content that performs.",
+  "250+ Professional Creators – Handpicked experts.",
+  "150% Increase in Click-through Rates",
+  "50% Lower Cost per Click",
+];
+
+const UGCSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section ref={ref} className="py-20 bg-background overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-primary/30 bg-primary/10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+            >
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Smart Marketing</span>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              <span className="text-foreground italic">Attract & Convert </span>
+              <span className="text-foreground italic">Competitor Traffic with </span>
+              <span className="text-primary italic">Authentic UGC</span>
+            </motion.h2>
+
+            {/* Description */}
+            <motion.p
+              className="text-lg text-muted-foreground mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Your products deserve the spotlight! The right UGC strategy boosts your brand, drives conversions, and builds trust!
+            </motion.p>
+
+            {/* Stats list */}
+            <motion.ul
+              className="space-y-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              {stats.map((stat, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                >
+                  <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-primary-foreground" />
+                  </div>
+                  <span className="text-foreground">{stat}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Button size="lg" className="px-8 py-6 text-base font-semibold">
+                GET STARTED
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right content - Phone mockup */}
+          <motion.div
+            className="relative flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {/* Phone frame */}
+            <div className="relative">
+              {/* Phone device */}
+              <div className="relative w-64 md:w-72 lg:w-80 bg-foreground rounded-[3rem] p-2 shadow-2xl">
+                {/* Notch */}
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-foreground rounded-full z-10" />
+                
+                {/* Screen */}
+                <div className="relative bg-primary rounded-[2.5rem] overflow-hidden aspect-[9/19]">
+                  {/* Decorative content */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-9xl font-bold text-primary-foreground/20 rotate-12">%</div>
+                  </div>
+                  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary-foreground/20 rounded-full blur-2xl" />
+                </div>
+              </div>
+
+              {/* Floating stat cards */}
+              <motion.div
+                className="absolute -top-4 -right-8 md:-right-16 bg-primary px-4 py-3 rounded-xl shadow-lg"
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <div className="text-2xl md:text-3xl font-bold text-primary-foreground">100%</div>
+                <div className="text-xs text-primary-foreground/80">Increase in revenues</div>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-4 -left-8 md:-left-16 bg-primary px-4 py-3 rounded-xl shadow-lg"
+                initial={{ opacity: 0, scale: 0.8, y: -20 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                <div className="text-2xl md:text-3xl font-bold text-primary-foreground">150%</div>
+                <div className="text-xs text-primary-foreground/80">Increase in Click-through Rates</div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default UGCSection;

@@ -78,7 +78,7 @@ const About = () => {
               <span className="text-primary">Meme Generation</span>
             </motion.h2>
 
-            <motion.p className="text-lg text-muted-foreground mb-8 leading-relaxed" initial={{
+            <motion.p className="text-lg mb-8 leading-relaxed text-secondary-foreground" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {

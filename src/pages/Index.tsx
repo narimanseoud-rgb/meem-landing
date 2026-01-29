@@ -30,10 +30,10 @@ const Index = () => {
       <Header />
       <Hero />
       <TrustedByScroll />
-      <ScrollingText words={topScrollingWords} direction="left" />
       <UGCSection />
-      <ScrollingText words={bottomScrollingWords} direction="right" />
+      <ScrollingText words={topScrollingWords} direction="left" />
       <HeroFloatingCards />
+      <ScrollingText words={bottomScrollingWords} direction="right" />
       <section id="about">
         <About />
         <Team />

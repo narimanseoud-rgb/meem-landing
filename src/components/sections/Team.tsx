@@ -9,6 +9,7 @@ const teamMembers = [
     role: "Founder & CEO",
     bio: "Visionary leader driving innovation and growth",
     initials: "NS",
+    image: "/nariman-sarud.png",
     social: { twitter: "#", linkedin: "#" },
   },
   {

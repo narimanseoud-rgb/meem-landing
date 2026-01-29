@@ -1,22 +1,37 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import hypeLogo from "@/assets/hype-logo.png";
+import { 
+  Zap, 
+  TrendingUp, 
+  Rocket, 
+  Target, 
+  Sparkles, 
+  Globe, 
+  MessageCircle, 
+  BarChart3,
+  Flame,
+  Star,
+  Crown,
+  Diamond,
+  Award,
+  Megaphone
+} from "lucide-react";
 
 const brands = [
-  { name: "Hype", logo: hypeLogo },
-  { name: "Viral Co", logo: hypeLogo },
-  { name: "TrendSet", logo: hypeLogo },
-  { name: "Buzz Media", logo: hypeLogo },
-  { name: "Meme Labs", logo: hypeLogo },
-  { name: "Culture Hub", logo: hypeLogo },
-  { name: "Social Pop", logo: hypeLogo },
-  { name: "Engage Inc", logo: hypeLogo },
-  { name: "BrandWave", logo: hypeLogo },
-  { name: "ClickMagnet", logo: hypeLogo },
-  { name: "Influence+", logo: hypeLogo },
-  { name: "ReachMax", logo: hypeLogo },
-  { name: "TrendRider", logo: hypeLogo },
-  { name: "ViralEdge", logo: hypeLogo },
+  { name: "Hype", Icon: Zap },
+  { name: "Viral Co", Icon: TrendingUp },
+  { name: "TrendSet", Icon: Rocket },
+  { name: "Buzz Media", Icon: Target },
+  { name: "Meme Labs", Icon: Sparkles },
+  { name: "Culture Hub", Icon: Globe },
+  { name: "Social Pop", Icon: MessageCircle },
+  { name: "Engage Inc", Icon: BarChart3 },
+  { name: "BrandWave", Icon: Flame },
+  { name: "ClickMagnet", Icon: Star },
+  { name: "Influence+", Icon: Crown },
+  { name: "ReachMax", Icon: Diamond },
+  { name: "TrendRider", Icon: Award },
+  { name: "ViralEdge", Icon: Megaphone },
 ];
 
 const TrustedByScroll = () => {
@@ -75,11 +90,9 @@ const TrustedByScroll = () => {
               whileHover={{ scale: 1.15 }}
               transition={{ duration: 0.2 }}
             >
-              <img
-                src={brand.logo}
-                alt={brand.name}
-                className="h-12 md:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-muted/50 flex items-center justify-center">
+                <brand.Icon className="w-8 h-8 md:w-10 md:h-10 text-foreground/70" />
+              </div>
               <span className="text-xs md:text-sm font-medium text-muted-foreground whitespace-nowrap">
                 {brand.name}
               </span>

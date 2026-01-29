@@ -52,8 +52,8 @@ const TrustedBy = () => {
 
   return (
     <section ref={ref} className="relative py-16 bg-background overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-transparent to-secondary/20" />
+      {/* Background - white */}
+      <div className="absolute inset-0 bg-background" />
 
       <div className="container mx-auto px-6 relative z-10">
 

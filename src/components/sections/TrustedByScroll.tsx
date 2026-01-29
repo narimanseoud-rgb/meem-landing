@@ -30,8 +30,8 @@ const TrustedByScroll = () => {
         >
           <div className="flex items-center gap-4">
             <div className="h-px w-12 md:w-24 bg-gradient-to-r from-transparent to-primary" />
-            <h2 className="text-2xl md:text-4xl font-black text-foreground uppercase tracking-tight">
-              Trusted By <span className="text-primary">Leading Brands</span>
+            <h2 className="text-2xl md:text-4xl font-black text-primary uppercase tracking-tight">
+              Trusted By Leading Brands
             </h2>
             <div className="h-px w-12 md:w-24 bg-gradient-to-l from-transparent to-primary" />
           </div>
@@ -39,7 +39,7 @@ const TrustedByScroll = () => {
       </div>
       
       {/* Logos Row - Auto-animating marquee */}
-      <div className="relative my-6 overflow-hidden">
+      <div className="relative my-6 overflow-visible py-4">
         {/* White gradients on sides */}
         <div 
           className="absolute left-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 

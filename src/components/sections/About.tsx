@@ -1,13 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import aboutHandImage from "@/assets/about-hand-image.png";
+import aboutCatImage from "@/assets/about-cat-image.png";
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="relative py-32 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, #FF8800 30%, #FF8800 70%, transparent 100%)" }}>
+  return <section ref={ref} className="relative py-32 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255, 136, 0, 0.7) 30%, rgba(255, 136, 0, 0.7) 70%, transparent 100%)" }}>
       {/* Abstract accent shapes */}
       <motion.div className="absolute top-20 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" initial={{
       opacity: 0,
@@ -85,8 +85,8 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <img 
-              src={aboutHandImage} 
-              alt="Hand with smiley face" 
+              src={aboutCatImage} 
+              alt="Cat mascot" 
               className="max-w-full h-auto max-h-[500px] object-contain"
             />
           </motion.div>

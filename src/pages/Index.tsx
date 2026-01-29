@@ -43,7 +43,6 @@ const Index = () => {
         <Services />
       </section>
       <TrustedBy />
-      <TrustedBy />
       <section id="contact">
         <Contact />
       </section>

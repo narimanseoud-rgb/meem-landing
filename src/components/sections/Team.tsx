@@ -5,18 +5,18 @@ import ammarPhoto from "@/assets/ammar-montaser.jpeg";
 
 const teamMembers = [
   {
-    name: "Ammar Montaser",
-    role: "Co-Founder & CEO",
+    name: "Nariman Sarud",
+    role: "Founder & CEO",
     bio: "Visionary leader driving innovation and growth",
-    initials: "AM",
-    image: ammarPhoto,
+    initials: "NS",
     social: { twitter: "#", linkedin: "#" },
   },
   {
-    name: "Alex Chen",
-    role: "Founder & Creative Director",
-    bio: "10+ years turning brands into cultural phenomena",
-    initials: "AC",
+    name: "Ammar Montaser",
+    role: "Technical Team Lead",
+    bio: "Building the tech behind viral campaigns",
+    initials: "AM",
+    image: ammarPhoto,
     social: { twitter: "#", linkedin: "#" },
   },
   {

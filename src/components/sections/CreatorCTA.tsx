@@ -62,9 +62,9 @@ const CreatorCTA = () => {
 
         {/* Right side - Dark background with text and rotating Meem logo */}
         <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2 overflow-hidden">
-          {/* Rotating Meem logo in bottom right corner */}
+          {/* Rotating Meem logo in bottom right corner - bigger */}
           <motion.div
-            className="absolute bottom-4 right-4 w-32 h-32 md:w-48 md:h-48 pointer-events-none"
+            className="absolute bottom-4 right-4 w-48 h-48 md:w-64 md:h-64 pointer-events-none"
             animate={{ rotate: 360 }}
             transition={{ 
               duration: 8, 

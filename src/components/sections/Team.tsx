@@ -71,25 +71,50 @@ const TeamCard = ({ member, isInView, index }: { member: TeamMember; isInView: b
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-          <span className="text-6xl font-bold text-primary/40">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
+          <span className="text-8xl font-bold text-primary/30">
             {member.initials}
           </span>
         </div>
       )}
 
-      {/* Gradient overlay - always visible but stronger on hover/tap */}
-      <div 
-        className={`absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-transparent transition-opacity duration-300 ${
-          isActive ? 'opacity-90' : 'opacity-40'
-        }`}
+      {/* Default gradient overlay - always visible */}
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/20 to-transparent opacity-80" />
+
+      {/* Hover gradient overlay - stronger on hover/tap */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isActive ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
       />
 
-      {/* Content - visible on hover/tap */}
-      <div 
-        className={`absolute inset-0 flex flex-col justify-end p-6 transition-all duration-300 ${
-          isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
+      {/* Default state - Name and role at bottom */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 p-6"
+        animate={{ 
+          opacity: isActive ? 0 : 1,
+          y: isActive ? 10 : 0
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3 className="text-xl font-bold text-background mb-1">
+          {member.name}
+        </h3>
+        <p className="text-sm text-primary font-medium">
+          {member.role}
+        </p>
+      </motion.div>
+
+      {/* Hover/Active state - Full info */}
+      <motion.div 
+        className="absolute inset-0 flex flex-col justify-end p-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ 
+          opacity: isActive ? 1 : 0,
+          y: isActive ? 0 : 20
+        }}
+        transition={{ duration: 0.3 }}
       >
         <h3 className="text-xl font-semibold text-background mb-1">
           {member.name}
@@ -120,23 +145,7 @@ const TeamCard = ({ member, isInView, index }: { member: TeamMember; isInView: b
             <Linkedin className="w-3.5 h-3.5" />
           </motion.a>
         </div>
-      </div>
-
-      {/* Name badge - always visible at bottom when not active */}
-      <div 
-        className={`absolute bottom-0 left-0 right-0 p-4 transition-opacity duration-300 ${
-          isActive ? 'opacity-0' : 'opacity-100'
-        }`}
-      >
-        <div className="bg-background/80 backdrop-blur-sm rounded-lg px-4 py-2">
-          <h3 className="text-sm font-semibold text-foreground">
-            {member.name}
-          </h3>
-          <p className="text-xs text-primary">
-            {member.role}
-          </p>
-        </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

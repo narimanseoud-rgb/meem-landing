@@ -43,7 +43,7 @@ const Header = () => {
             <img 
               src={meemTextLogo} 
               alt="Meme Media Hub" 
-              className="h-6 w-auto hidden sm:block"
+              className="h-4 w-auto hidden sm:block"
             />
           </a>
 
@@ -53,13 +53,13 @@ const Header = () => {
               <motion.a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-white/90 hover:text-primary transition-colors relative group"
+                className="text-sm font-medium text-primary hover:text-white transition-colors relative group"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.4 }}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
               </motion.a>
             ))}
           </nav>

@@ -34,7 +34,7 @@ const brands = [{
 const TrustedByScroll = () => {
   // Duplicate the brands array for seamless infinite scroll
   const duplicatedBrands = [...brands, ...brands];
-  return <section className="py-16 overflow-hidden bg-secondary">
+  return <section className="py-16 overflow-hidden bg-background">
       <div className="container mx-auto px-6 mb-10">
         <motion.p className="text-center text-sm font-semibold text-foreground uppercase tracking-widest" initial={{
         opacity: 0,

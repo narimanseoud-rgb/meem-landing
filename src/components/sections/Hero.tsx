@@ -3,6 +3,7 @@ import { Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
 import heroOverlay from "@/assets/hero-overlay.png";
 import meemTextLogo from "@/assets/meem-text-logo.png";
 import heroVideo from "@/assets/hero-video.mp4";
+import HeroFloatingCards from "./HeroFloatingCards";
 const socialLinks = [{
   icon: Instagram,
   href: "#",
@@ -115,8 +116,11 @@ const Hero = () => {
 
       {/* Uploaded overlay image at bottom */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10">
-        <img src={heroOverlay} alt="" className="w-full h-auto object-cover mix-blend-screen" />
+        <img src={heroOverlay} alt="" className="w-full h-auto object-cover mix-blend-screen opacity-60" />
       </div>
+
+      {/* Floating cards on left side */}
+      <HeroFloatingCards />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">

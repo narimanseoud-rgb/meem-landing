@@ -18,6 +18,9 @@ const Header = () => {
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%)",
+      }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}

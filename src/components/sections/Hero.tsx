@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
 import heroOverlay from "@/assets/hero-overlay.png";
 import meemTextLogo from "@/assets/meem-text-logo.png";
+import heroVideo from "@/assets/hero-video.mp4";
 
 const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
@@ -14,8 +15,19 @@ const socialLinks = [
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-16 md:pt-20">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-background" />
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+      
+      {/* Dark overlay for video */}
+      <div className="absolute inset-0 bg-background/40" />
       
       {/* Full-height orange to transparent gradient overlay */}
       <div 
@@ -128,11 +140,11 @@ const Hero = () => {
         
       </div>
       
-      {/* Social links - bottom center horizontal */}
+      {/* Social links - bottom right corner */}
       <motion.div
-        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-row gap-3"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        className="absolute bottom-24 right-6 md:right-10 z-20 flex flex-row gap-3"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
       >
         {socialLinks.map((social, index) => (

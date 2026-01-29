@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
+import TrustedByScroll from "@/components/sections/TrustedByScroll";
 import About from "@/components/sections/About";
 import Team from "@/components/sections/Team";
 import Services from "@/components/sections/Services";
@@ -13,6 +14,7 @@ const Index = () => {
     <main className="dark">
       <Header />
       <Hero />
+      <TrustedByScroll />
       <section id="about">
         <About />
         <Team />

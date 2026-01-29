@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import videoCard1 from "@/assets/video-card-1.mp4";
@@ -72,6 +73,8 @@ const VideoCard = ({ video }: { video: string }) => {
 
 const HeroFloatingCards = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef(null);
+  const isInView = useInView(headerRef, { once: true, margin: "-100px" });
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -104,6 +107,38 @@ const HeroFloatingCards = () => {
 
   return (
     <section className="py-16 overflow-hidden bg-background">
+      {/* Header */}
+      <div ref={headerRef} className="text-center mb-12 px-6">
+        <motion.span 
+          className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/30 rounded-full bg-primary/10" 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={isInView ? { opacity: 1, y: 0 } : {}} 
+          transition={{ duration: 0.6 }}
+        >
+          Our Work
+        </motion.span>
+
+        <motion.h2 
+          className="text-5xl md:text-5xl lg:text-6xl font-bold mb-6" 
+          initial={{ opacity: 0, y: 30 }} 
+          animate={isInView ? { opacity: 1, y: 0 } : {}} 
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <span className="text-primary-foreground">Campaigns That </span>
+          <span className="text-primary">Broke Through</span>
+        </motion.h2>
+
+        <motion.p 
+          className="text-lg text-muted-foreground max-w-2xl mx-auto" 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={isInView ? { opacity: 1, y: 0 } : {}} 
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          A selection of our most impactful work. Each project represents 
+          a unique challenge solved with creativity and cultural intelligence.
+        </motion.p>
+      </div>
+
       <div className="relative">
         {/* White to transparent gradients */}
         <div 

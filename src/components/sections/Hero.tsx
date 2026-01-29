@@ -113,7 +113,7 @@ const Hero = () => {
 
       {/* Social links - left side, centered on mobile */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 md:bottom-8 z-20 flex flex-row gap-3 px-4 py-3 rounded-full bg-background/20 backdrop-blur-md border border-background/30" 
+        className="absolute bottom-8 left-0 right-0 flex justify-center md:justify-start md:left-6 md:right-auto z-20 px-4 md:px-0"
         initial={{
           opacity: 0,
           x: -20
@@ -127,7 +127,8 @@ const Hero = () => {
           duration: 0.6
         }}
       >
-        {socialLinks.map((social, index) => (
+        <div className="flex flex-row gap-3 px-4 py-3 rounded-full bg-background/20 backdrop-blur-md border border-background/30">
+          {socialLinks.map((social, index) => (
           <motion.a 
             key={social.label} 
             href={social.href} 
@@ -153,6 +154,7 @@ const Hero = () => {
             <social.icon className="w-4 h-4" />
           </motion.a>
         ))}
+        </div>
       </motion.div>
 
     </section>;

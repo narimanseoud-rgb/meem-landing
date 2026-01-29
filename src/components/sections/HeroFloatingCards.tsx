@@ -57,38 +57,48 @@ const HeroFloatingCards = () => {
     offset: ["start end", "end start"]
   });
 
-  // Row 1 moves right as user scrolls
-  const x1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  // Row 2 moves left as user scrolls
-  const x2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  // Increased parallax intensity - Row 1 moves right as user scrolls
+  const x1 = useTransform(scrollYProgress, [0, 1], [-100, 400]);
+  // Increased parallax intensity - Row 2 moves left as user scrolls
+  const x2 = useTransform(scrollYProgress, [0, 1], [100, -400]);
 
   return (
     <section ref={containerRef} className="py-16 overflow-hidden bg-background">
-      <div className="relative px-8">
-        {/* Orange gradient fade edges - larger than container */}
-        <div 
-          className="absolute -left-8 top-0 bottom-0 w-48 md:w-56 z-10 pointer-events-none" 
-          style={{ background: "linear-gradient(to right, #FF8800 0%, rgba(255, 136, 0, 0.6) 40%, transparent 100%)" }} 
-        />
-        <div 
-          className="absolute -right-8 top-0 bottom-0 w-48 md:w-56 z-10 pointer-events-none" 
-          style={{ background: "linear-gradient(to left, #FF8800 0%, rgba(255, 136, 0, 0.6) 40%, transparent 100%)" }} 
-        />
-
-        <div className="flex flex-col gap-6 py-4">
-          {/* First row - moves right on scroll */}
+      <div className="flex flex-col gap-6 py-4">
+        {/* First row - moves right on scroll */}
+        <div className="relative px-8">
+          {/* Separate gradient for row 1 */}
+          <div 
+            className="absolute -left-8 top-0 bottom-0 w-56 md:w-64 z-10 pointer-events-none" 
+            style={{ background: "linear-gradient(to right, #FF8800 0%, rgba(255, 136, 0, 0.8) 50%, transparent 100%)" }} 
+          />
+          <div 
+            className="absolute -right-8 top-0 bottom-0 w-56 md:w-64 z-10 pointer-events-none" 
+            style={{ background: "linear-gradient(to left, #FF8800 0%, rgba(255, 136, 0, 0.8) 50%, transparent 100%)" }} 
+          />
           <motion.div
-            className="flex gap-4 px-8"
+            className="flex gap-4 px-12"
             style={{ x: x1 }}
           >
             {cardsRow1.map((card, index) => (
               <VideoCard key={`row1-${card.id}-${index}`} video={card.video} />
             ))}
           </motion.div>
-          
-          {/* Second row - moves left on scroll */}
+        </div>
+        
+        {/* Second row - moves left on scroll */}
+        <div className="relative px-8">
+          {/* Separate gradient for row 2 */}
+          <div 
+            className="absolute -left-8 top-0 bottom-0 w-56 md:w-64 z-10 pointer-events-none" 
+            style={{ background: "linear-gradient(to right, #FF8800 0%, rgba(255, 136, 0, 0.8) 50%, transparent 100%)" }} 
+          />
+          <div 
+            className="absolute -right-8 top-0 bottom-0 w-56 md:w-64 z-10 pointer-events-none" 
+            style={{ background: "linear-gradient(to left, #FF8800 0%, rgba(255, 136, 0, 0.8) 50%, transparent 100%)" }} 
+          />
           <motion.div
-            className="flex gap-4 px-8 -ml-20"
+            className="flex gap-4 px-12 -ml-20"
             style={{ x: x2 }}
           >
             {cardsRow2.map((card, index) => (

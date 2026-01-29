@@ -112,7 +112,7 @@ const Hero = () => {
       </div>
 
       {/* Social links - bottom right corner */}
-      <motion.div className="absolute bottom-24 right-6 md:right-10 z-20 flex flex-row gap-3" initial={{
+      <motion.div className="absolute bottom-8 right-6 md:right-10 z-20 flex flex-row gap-3" initial={{
       opacity: 0,
       x: 20
     }} animate={{

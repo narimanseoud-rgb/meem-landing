@@ -61,58 +61,6 @@ const Hero = () => {
       delay: 1
     }} />
 
-      {/* Floating geometric shapes */}
-      <motion.div className="absolute top-32 right-20 w-16 h-16 border-2 border-primary/40 rotate-45" animate={{
-      y: [0, -20, 0],
-      rotate: [45, 90, 45]
-    }} transition={{
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }} />
-      <motion.div className="absolute bottom-48 left-16 w-12 h-12 bg-primary/30 rounded-full" animate={{
-      y: [0, -15, 0],
-      scale: [1, 1.2, 1]
-    }} transition={{
-      duration: 5,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay: 0.5
-    }} />
-      <motion.div className="absolute top-1/3 left-10 w-20 h-20 border border-primary/20 rounded-lg" animate={{
-      y: [0, -25, 0],
-      rotate: [0, 15, 0]
-    }} transition={{
-      duration: 7,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay: 1
-    }} />
-      <motion.div className="absolute bottom-1/3 right-10 w-8 h-8 bg-primary/40" animate={{
-      y: [0, -18, 0],
-      rotate: [0, 180, 360]
-    }} transition={{
-      duration: 8,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay: 2
-    }} />
-      <motion.div className="absolute top-1/2 right-1/3 w-6 h-6 border border-foreground/20 rounded-full" animate={{
-      y: [0, -12, 0],
-      x: [0, 10, 0]
-    }} transition={{
-      duration: 5,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay: 1.5
-    }} />
-      <motion.div className="absolute bottom-1/2 left-1/3 w-10 h-10 border-2 border-primary/30" animate={{
-      rotate: [0, 90, 180, 270, 360]
-    }} transition={{
-      duration: 12,
-      repeat: Infinity,
-      ease: "linear"
-    }} />
 
       {/* Overlay logo at bottom */}
       <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10">

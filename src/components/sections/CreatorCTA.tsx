@@ -1,9 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import meemMLogo from "@/assets/meem-m-logo.png";
-import meemMOverlay from "@/assets/meem-m-overlay.png";
-import meemCover from "@/assets/meem-cover.png";
+import meemLogoRotating from "@/assets/meem-logo-rotating.png";
+import logoMGirl from "@/assets/logo-m-girl.png";
 import rotatingShape from "@/assets/rotating-shape.png";
 import creatorGirl from "@/assets/creator-girl.png";
 
@@ -14,7 +13,7 @@ const CreatorCTA = () => {
   return (
     <section ref={ref} className="relative overflow-hidden h-screen">
       <div className="grid lg:grid-cols-2 h-full">
-        {/* Left side - Image with M logo overlay background */}
+        {/* Left side - Girl with M logo and rotating shape */}
         <div 
           className="relative flex items-end justify-center overflow-hidden order-2 lg:order-1"
           style={{ backgroundColor: "#FF8800" }}
@@ -36,17 +35,17 @@ const CreatorCTA = () => {
             />
           </motion.div>
 
-          {/* M logo overlay behind the girl */}
+          {/* M logo behind the girl at the bottom */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 0.3 } : {}}
+            className="absolute bottom-0 left-0 right-0 flex items-end justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 0.4, y: 0 } : {}}
             transition={{ duration: 1 }}
           >
             <img
-              src={meemMOverlay}
+              src={logoMGirl}
               alt=""
-              className="w-[90%] h-auto object-contain"
+              className="w-[80%] h-auto object-contain"
             />
           </motion.div>
 
@@ -61,7 +60,7 @@ const CreatorCTA = () => {
           />
         </div>
 
-        {/* Right side - Dark background with text */}
+        {/* Right side - Dark background with text and rotating Meem logo */}
         <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2 overflow-hidden">
           {/* Rotating Meem logo in background */}
           <motion.div
@@ -74,9 +73,9 @@ const CreatorCTA = () => {
             }}
           >
             <img
-              src={meemCover}
+              src={meemLogoRotating}
               alt=""
-              className="w-[120%] h-auto object-contain opacity-10"
+              className="w-[120%] h-auto object-contain opacity-15"
             />
           </motion.div>
 
@@ -121,20 +120,6 @@ const CreatorCTA = () => {
             >
               GET STARTED
             </Button>
-          </motion.div>
-
-          {/* M logo at the bottom - transparent */}
-          <motion.div
-            className="absolute bottom-8 left-8 right-8 z-10"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 0.15, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <img
-              src={meemMLogo}
-              alt=""
-              className="w-full h-auto object-contain max-h-32"
-            />
           </motion.div>
         </div>
       </div>

@@ -11,6 +11,12 @@ const brands = [
   { name: "Culture Hub", logo: hypeLogo },
   { name: "Social Pop", logo: hypeLogo },
   { name: "Engage Inc", logo: hypeLogo },
+  { name: "BrandWave", logo: hypeLogo },
+  { name: "ClickMagnet", logo: hypeLogo },
+  { name: "Influence+", logo: hypeLogo },
+  { name: "ReachMax", logo: hypeLogo },
+  { name: "TrendRider", logo: hypeLogo },
+  { name: "ViralEdge", logo: hypeLogo },
 ];
 
 const TrustedByScroll = () => {

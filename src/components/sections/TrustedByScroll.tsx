@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
+import { Zap, Flame, Star, Diamond, Crown, Sparkles, Rocket, Heart, Globe, Hexagon } from "lucide-react";
 
 const brands = [
-  { name: "TechFlow", initials: "TF" },
-  { name: "UrbanEats", initials: "UE" },
-  { name: "CryptoVault", initials: "CV" },
-  { name: "StyleHouse", initials: "SH" },
-  { name: "GamersUnite", initials: "GU" },
-  { name: "EcoLife", initials: "EL" },
-  { name: "MediaPulse", initials: "MP" },
-  { name: "NextGen", initials: "NG" },
-  { name: "CloudNine", initials: "CN" },
-  { name: "BrightIdea", initials: "BI" },
+  { name: "TechFlow", icon: Zap },
+  { name: "UrbanEats", icon: Flame },
+  { name: "CryptoVault", icon: Diamond },
+  { name: "StyleHouse", icon: Star },
+  { name: "GamersUnite", icon: Crown },
+  { name: "EcoLife", icon: Globe },
+  { name: "MediaPulse", icon: Sparkles },
+  { name: "NextGen", icon: Rocket },
+  { name: "CloudNine", icon: Heart },
+  { name: "BrightIdea", icon: Hexagon },
 ];
 
 const TrustedByScroll = () => {
@@ -18,7 +19,7 @@ const TrustedByScroll = () => {
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="py-16 bg-muted/50 overflow-hidden border-y border-border">
+    <section className="py-16 bg-background overflow-hidden">
       <div className="container mx-auto px-6 mb-10">
         <motion.p
           className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest"
@@ -32,38 +33,46 @@ const TrustedByScroll = () => {
       </div>
       
       <div className="relative">
-        {/* Gradient fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/50 to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-muted/50 to-transparent z-10" />
+        {/* Orange gradient fade edges */}
+        <div 
+          className="absolute left-0 top-0 bottom-0 w-40 z-10"
+          style={{
+            background: "linear-gradient(to right, hsl(32, 100%, 50%) 0%, hsl(32, 100%, 50%, 0.5) 40%, transparent 100%)",
+          }}
+        />
+        <div 
+          className="absolute right-0 top-0 bottom-0 w-40 z-10"
+          style={{
+            background: "linear-gradient(to left, hsl(32, 100%, 50%) 0%, hsl(32, 100%, 50%, 0.5) 40%, transparent 100%)",
+          }}
+        />
         
         {/* Scrolling container */}
         <motion.div
-          className="flex gap-16 items-center"
+          className="flex gap-20 items-center px-8"
           animate={{
-            x: [0, -50 * brands.length * 8],
+            x: [0, -80 * brands.length],
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 25,
+              duration: 20,
               ease: "linear",
             },
           }}
         >
-          {duplicatedBrands.map((brand, index) => (
-            <div
-              key={`${brand.name}-${index}`}
-              className="flex items-center gap-4 shrink-0 px-6 py-3 rounded-full bg-card border border-border/50 shadow-sm"
-            >
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                {brand.initials}
+          {duplicatedBrands.map((brand, index) => {
+            const IconComponent = brand.icon;
+            return (
+              <div
+                key={`${brand.name}-${index}`}
+                className="shrink-0 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <IconComponent className="w-12 h-12 text-foreground" strokeWidth={1.5} />
               </div>
-              <span className="text-foreground font-medium whitespace-nowrap">
-                {brand.name}
-              </span>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>

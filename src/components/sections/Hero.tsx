@@ -14,7 +14,7 @@ const socialLinks = [
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-16 md:pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(0,0%,8%)] pt-16 md:pt-20">
       {/* Video background */}
       <video
         autoPlay

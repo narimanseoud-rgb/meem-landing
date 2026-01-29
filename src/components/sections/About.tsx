@@ -93,7 +93,7 @@ const About = () => {
               you need a team that understands how culture really works online.
             </motion.p>
 
-            <motion.p className="text-lg text-muted-foreground leading-relaxed" initial={{
+            <motion.p className="text-lg leading-relaxed text-secondary-foreground" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {

@@ -131,7 +131,7 @@ const Hero = () => {
           <motion.a 
             key={social.label} 
             href={social.href} 
-            className="w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-background hover:text-primary hover:bg-background/50 transition-all duration-300" 
+            className="w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-white hover:text-primary hover:bg-background/50 transition-all duration-300"
             aria-label={social.label} 
             whileHover={{
               scale: 1.15,
@@ -155,32 +155,6 @@ const Hero = () => {
         ))}
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20" initial={{
-      opacity: 0
-    }} animate={{
-      opacity: 1
-    }} transition={{
-      delay: 1.5,
-      duration: 0.8
-    }}>
-        <motion.div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center" animate={{
-        y: [0, 5, 0]
-      }} transition={{
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }}>
-          <motion.div className="w-1.5 h-3 bg-primary rounded-full mt-2" animate={{
-          y: [0, 8, 0],
-          opacity: [1, 0.5, 1]
-        }} transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }} />
-        </motion.div>
-      </motion.div>
     </section>;
 };
 export default Hero;

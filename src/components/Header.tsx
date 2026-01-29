@@ -52,7 +52,7 @@ const Header = () => {
               <motion.a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group"
+                className="text-sm font-medium text-white/90 hover:text-primary transition-colors relative group"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.4 }}

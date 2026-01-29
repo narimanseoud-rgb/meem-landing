@@ -5,6 +5,7 @@ import UGCSection from "@/components/sections/UGCSection";
 import HeroFloatingCards from "@/components/sections/HeroFloatingCards";
 import About from "@/components/sections/About";
 import Team from "@/components/sections/Team";
+import CreatorCTA from "@/components/sections/CreatorCTA";
 import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
 import TrustedBy from "@/components/sections/TrustedBy";
@@ -23,6 +24,7 @@ const Index = () => {
         <About />
         <Team />
       </section>
+      <CreatorCTA />
       <section id="services">
         <Services />
       </section>

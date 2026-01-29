@@ -1,7 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import meemCover from "@/assets/meem-cover.png";
+import meemMLogo from "@/assets/meem-m-logo.png";
+import rotatingShape from "@/assets/rotating-shape.png";
 import creatorGirl from "@/assets/creator-girl.png";
 
 const CreatorCTA = () => {
@@ -9,10 +10,43 @@ const CreatorCTA = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative overflow-hidden">
-      <div className="grid lg:grid-cols-2 min-h-[600px] lg:min-h-[700px]">
-        {/* Left side - Dark background with text */}
-        <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20">
+    <section ref={ref} className="relative overflow-hidden h-screen">
+      <div className="grid lg:grid-cols-2 h-full">
+        {/* Left side - Image with rotating shape background */}
+        <div 
+          className="relative flex items-end justify-center overflow-hidden order-2 lg:order-1"
+          style={{ backgroundColor: "#FF8800" }}
+        >
+          {/* Rotating shape behind the girl */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            animate={{ rotate: 360 }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+          >
+            <img
+              src={rotatingShape}
+              alt=""
+              className="w-[80%] h-auto object-contain opacity-60"
+            />
+          </motion.div>
+
+          {/* Creator girl image */}
+          <motion.img
+            src={creatorGirl}
+            alt="Content Creator"
+            className="relative z-10 h-full w-auto max-w-full object-contain object-bottom"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+        </div>
+
+        {/* Right side - Dark background with text */}
+        <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2">
           {/* Content */}
           <motion.h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold italic mb-4"
@@ -55,51 +89,19 @@ const CreatorCTA = () => {
             </Button>
           </motion.div>
 
-          {/* Meem logo at the bottom */}
+          {/* M logo at the bottom - transparent */}
           <motion.div
-            className="absolute bottom-0 left-0 w-full overflow-hidden"
-            initial={{ opacity: 0, y: 50 }}
+            className="absolute bottom-8 left-8 right-8"
+            initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 0.15, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
             <img
-              src={meemCover}
+              src={meemMLogo}
               alt=""
-              className="w-full h-auto object-contain translate-y-1/3"
-              style={{ filter: "brightness(0) invert(0.5)" }}
+              className="w-full h-auto object-contain max-h-32"
             />
           </motion.div>
-        </div>
-
-        {/* Right side - Image with logo background */}
-        <div 
-          className="relative flex items-end justify-center overflow-hidden"
-          style={{ backgroundColor: "#FF8800" }}
-        >
-          {/* Meem logo as background */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 0.3, scale: 1 } : {}}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <img
-              src={meemCover}
-              alt=""
-              className="w-[120%] h-auto object-contain"
-              style={{ filter: "brightness(0)" }}
-            />
-          </motion.div>
-
-          {/* Creator girl image */}
-          <motion.img
-            src={creatorGirl}
-            alt="Content Creator"
-            className="relative z-10 h-full w-auto max-w-full object-contain object-bottom"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
         </div>
       </div>
     </section>

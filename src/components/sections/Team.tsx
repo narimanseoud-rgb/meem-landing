@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Twitter, Linkedin } from "lucide-react";
 import ammarPhoto from "@/assets/ammar-montaser.jpeg";
 
@@ -33,47 +33,117 @@ const teamMembers = [
     initials: "MR",
     social: { twitter: "#", linkedin: "#" },
   },
-  {
-    name: "Jordan Taylor",
-    role: "Social Media Director",
-    bio: "Built communities of 1M+ engaged followers",
-    initials: "JT",
-    social: { twitter: "#", linkedin: "#" },
-  },
 ];
+
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+  image?: string;
+  social: { twitter: string; linkedin: string };
+}
+
+const TeamCard = ({ member, isInView, index }: { member: TeamMember; isInView: boolean; index: number }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <motion.div
+      className="group relative h-80 md:h-96 rounded-2xl overflow-hidden cursor-pointer"
+      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ 
+        type: "spring", 
+        stiffness: 100, 
+        damping: 15, 
+        delay: index * 0.15 
+      }}
+      whileHover={{ y: -10 }}
+      onClick={() => setIsActive(!isActive)}
+      onMouseEnter={() => setIsActive(true)}
+      onMouseLeave={() => setIsActive(false)}
+    >
+      {/* Background image */}
+      {member.image ? (
+        <img 
+          src={member.image} 
+          alt={member.name} 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+          <span className="text-6xl font-bold text-primary/40">
+            {member.initials}
+          </span>
+        </div>
+      )}
+
+      {/* Gradient overlay - always visible but stronger on hover/tap */}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-transparent transition-opacity duration-300 ${
+          isActive ? 'opacity-90' : 'opacity-40'
+        }`}
+      />
+
+      {/* Content - visible on hover/tap */}
+      <div 
+        className={`absolute inset-0 flex flex-col justify-end p-6 transition-all duration-300 ${
+          isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
+        <h3 className="text-xl font-semibold text-background mb-1">
+          {member.name}
+        </h3>
+        <p className="text-sm text-primary font-medium mb-2">
+          {member.role}
+        </p>
+        <p className="text-sm text-background/80 mb-4">
+          {member.bio}
+        </p>
+
+        {/* Social links */}
+        <div className="flex gap-3">
+          <motion.a
+            href={member.social.twitter}
+            className="w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-all"
+            whileHover={{ scale: 1.2 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Twitter className="w-3.5 h-3.5" />
+          </motion.a>
+          <motion.a
+            href={member.social.linkedin}
+            className="w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-all"
+            whileHover={{ scale: 1.2 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Linkedin className="w-3.5 h-3.5" />
+          </motion.a>
+        </div>
+      </div>
+
+      {/* Name badge - always visible at bottom when not active */}
+      <div 
+        className={`absolute bottom-0 left-0 right-0 p-4 transition-opacity duration-300 ${
+          isActive ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg px-4 py-2">
+          <h3 className="text-sm font-semibold text-foreground">
+            {member.name}
+          </h3>
+          <p className="text-xs text-primary">
+            {member.role}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const Team = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 60,
-      scale: 0.9,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
 
   return (
     <section ref={ref} className="relative py-24 bg-background overflow-hidden">
@@ -139,80 +209,16 @@ const Team = () => {
         </div>
 
         {/* Team grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {teamMembers.map((member) => (
-            <motion.div
-              key={member.name}
-              className="group relative p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden"
-              variants={cardVariants}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-            >
-              {/* Hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Avatar */}
-              <motion.div 
-                className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 overflow-hidden"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
-                {'image' in member && member.image ? (
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-2xl font-bold text-primary">
-                    {member.initials}
-                  </span>
-                )}
-                <div className="absolute inset-0 rounded-full border-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
-              </motion.div>
-
-              {/* Info */}
-              <div className="relative text-center">
-                <h3 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-sm text-primary font-medium mb-2">
-                  {member.role}
-                </p>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {member.bio}
-                </p>
-
-                {/* Social links */}
-                <div className="flex justify-center gap-3">
-                  <motion.a
-                    href={member.social.twitter}
-                    className="w-8 h-8 rounded-full bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
-                    whileHover={{ scale: 1.2, y: -2 }}
-                  >
-                    <Twitter className="w-3.5 h-3.5" />
-                  </motion.a>
-                  <motion.a
-                    href={member.social.linkedin}
-                    className="w-8 h-8 rounded-full bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
-                    whileHover={{ scale: 1.2, y: -2 }}
-                  >
-                    <Linkedin className="w-3.5 h-3.5" />
-                  </motion.a>
-                </div>
-              </div>
-
-              {/* Bottom accent */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-            </motion.div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {teamMembers.map((member, index) => (
+            <TeamCard 
+              key={member.name} 
+              member={member} 
+              isInView={isInView} 
+              index={index} 
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

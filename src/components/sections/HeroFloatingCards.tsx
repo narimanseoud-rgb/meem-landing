@@ -64,21 +64,21 @@ const HeroFloatingCards = () => {
 
   return (
     <section ref={containerRef} className="py-16 overflow-hidden bg-background">
-      <div className="relative">
-        {/* Green gradient fade edges */}
+      <div className="relative px-8">
+        {/* Orange gradient fade edges - larger than container */}
         <div 
-          className="absolute left-0 top-0 bottom-0 w-40 z-10 pointer-events-none" 
-          style={{ background: "linear-gradient(to right, hsl(142, 76%, 36%) 0%, hsl(142, 76%, 36%, 0.5) 40%, transparent 100%)" }} 
+          className="absolute -left-8 top-0 bottom-0 w-48 md:w-56 z-10 pointer-events-none" 
+          style={{ background: "linear-gradient(to right, #FF8800 0%, rgba(255, 136, 0, 0.6) 40%, transparent 100%)" }} 
         />
         <div 
-          className="absolute right-0 top-0 bottom-0 w-40 z-10 pointer-events-none" 
-          style={{ background: "linear-gradient(to left, hsl(142, 76%, 36%) 0%, hsl(142, 76%, 36%, 0.5) 40%, transparent 100%)" }} 
+          className="absolute -right-8 top-0 bottom-0 w-48 md:w-56 z-10 pointer-events-none" 
+          style={{ background: "linear-gradient(to left, #FF8800 0%, rgba(255, 136, 0, 0.6) 40%, transparent 100%)" }} 
         />
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 py-4">
           {/* First row - moves right on scroll */}
           <motion.div
-            className="flex gap-4 px-4"
+            className="flex gap-4 px-8"
             style={{ x: x1 }}
           >
             {cardsRow1.map((card, index) => (
@@ -88,7 +88,7 @@ const HeroFloatingCards = () => {
           
           {/* Second row - moves left on scroll */}
           <motion.div
-            className="flex gap-4 px-4 -ml-20"
+            className="flex gap-4 px-8 -ml-20"
             style={{ x: x2 }}
           >
             {cardsRow2.map((card, index) => (

@@ -29,11 +29,11 @@ const Hero = () => {
       {/* Dark overlay for video */}
       <div className="absolute inset-0 bg-background/40" />
       
-      {/* Full-height orange to transparent gradient overlay */}
+      {/* Half-height orange to transparent gradient overlay */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none"
         style={{
-          background: "linear-gradient(to top, hsl(32, 100%, 50%) 0%, hsl(32, 100%, 50%, 0.6) 30%, hsl(32, 100%, 50%, 0.2) 60%, transparent 100%)",
+          background: "linear-gradient(to top, hsl(32, 100%, 50%) 0%, hsl(32, 100%, 50%, 0.6) 40%, transparent 100%)",
         }}
       />
       

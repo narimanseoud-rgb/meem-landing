@@ -11,7 +11,7 @@ import Footer from "@/components/sections/Footer";
 
 const Index = () => {
   return (
-    <main className="dark">
+    <main>
       <Header />
       <Hero />
       <TrustedByScroll />

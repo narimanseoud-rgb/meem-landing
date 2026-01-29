@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import hypeLogo from "@/assets/hype-logo.png";
 
@@ -12,62 +12,6 @@ const brands = [
   { name: "Social Pop", logo: hypeLogo },
   { name: "Engage Inc", logo: hypeLogo },
 ];
-
-const topScrollingWords = [
-  "STRATEGY", "BRANDING", "CAMPAIGNS", "DIGITAL", "SOCIAL", 
-  "CONTENT", "CREATIVE", "ANALYTICS", "GROWTH", "ENGAGEMENT"
-];
-
-const bottomScrollingWords = [
-  "CREATORS", "VIRAL", "TRENDING", "INFLUENCE", "REACH", 
-  "IMPACT", "CULTURE", "INNOVATION", "STORYTELLING", "RESULTS"
-];
-
-const ScrollingWords = ({ words, direction }: { words: string[]; direction: "left" | "right" }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const duplicatedWords = [...words, ...words];
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const x = useTransform(
-    scrollYProgress, 
-    [0, 1], 
-    direction === "left" ? [0, -600] : [-300, 300]
-  );
-
-  return (
-    <div ref={containerRef} className="relative overflow-hidden py-4">
-      {/* White gradients on sides */}
-      <div 
-        className="absolute left-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
-        style={{ background: "linear-gradient(to right, hsl(var(--background)) 0%, transparent 100%)" }} 
-      />
-      <div 
-        className="absolute right-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
-        style={{ background: "linear-gradient(to left, hsl(var(--background)) 0%, transparent 100%)" }} 
-      />
-      
-      <motion.div
-        className="flex gap-4 items-center px-8"
-        style={{ x }}
-      >
-        {duplicatedWords.map((word, index) => (
-          <div key={`word-${index}`} className="flex items-center gap-4 shrink-0">
-            <span className="text-4xl md:text-6xl font-black text-primary/40 tracking-widest">
-              {word}
-            </span>
-            {index < duplicatedWords.length - 1 && (
-              <span className="text-4xl md:text-6xl text-primary/40">•</span>
-            )}
-          </div>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
 
 const TrustedByScroll = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -86,9 +30,6 @@ const TrustedByScroll = () => {
           Trusted By Leading Brands
         </motion.p>
       </div>
-
-      {/* Top scrolling words */}
-      <ScrollingWords words={topScrollingWords} direction="left" />
       
       {/* Logos Row - Auto-animating marquee */}
       <div className="relative my-6 overflow-hidden">
@@ -133,9 +74,6 @@ const TrustedByScroll = () => {
           ))}
         </motion.div>
       </div>
-
-      {/* Bottom scrolling words */}
-      <ScrollingWords words={bottomScrollingWords} direction="right" />
     </section>
   );
 };

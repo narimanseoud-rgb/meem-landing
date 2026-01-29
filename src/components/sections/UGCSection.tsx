@@ -17,7 +17,7 @@ const UGCSection = () => {
 
   return (
     <section ref={ref} className="py-20 bg-background overflow-hidden">
-      <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <motion.div

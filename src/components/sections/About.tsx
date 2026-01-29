@@ -24,7 +24,7 @@ const About = () => {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="relative py-32 bg-secondary overflow-hidden">
+  return <section ref={ref} className="relative py-32 overflow-hidden" style={{ backgroundColor: "#FF8800" }}>
       {/* Abstract accent shapes */}
       <motion.div className="absolute top-20 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" initial={{
       opacity: 0,
@@ -52,7 +52,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <div>
-            <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/30 rounded-full bg-primary/10" initial={{
+            <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-foreground border border-foreground/30 rounded-full bg-foreground/10" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -74,11 +74,11 @@ const About = () => {
             duration: 0.8,
             delay: 0.1
           }}>
-              <span className="text-slate-50">Marketing for the </span>
-              <span className="text-primary">Meme Generation</span>
+              <span className="text-foreground">Marketing for the </span>
+              <span className="text-foreground font-black">Meme Generation</span>
             </motion.h2>
 
-            <motion.p className="text-lg mb-8 leading-relaxed text-secondary-foreground" initial={{
+            <motion.p className="text-lg mb-8 leading-relaxed text-foreground/90" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -93,7 +93,7 @@ const About = () => {
               you need a team that understands how culture really works online.
             </motion.p>
 
-            <motion.p className="text-lg leading-relaxed text-secondary-foreground" initial={{
+            <motion.p className="text-lg leading-relaxed text-foreground/90" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -111,7 +111,7 @@ const About = () => {
 
           {/* Right content - Feature cards */}
           <div className="grid sm:grid-cols-2 gap-6">
-            {features.map((feature, index) => <motion.div key={feature.title} className="p-6 bg-card rounded-xl border border-border/50 hover:border-primary/30 transition-colors duration-300 group" initial={{
+            {features.map((feature, index) => <motion.div key={feature.title} className="p-6 bg-background rounded-xl border border-border/50 hover:border-foreground/30 transition-colors duration-300 group" initial={{
             opacity: 0,
             y: 30
           }} animate={isInView ? {

@@ -36,7 +36,7 @@ const TrustedByScroll = () => {
   const duplicatedBrands = [...brands, ...brands];
   return <section className="py-16 overflow-hidden bg-secondary">
       <div className="container mx-auto px-6 mb-10">
-        <motion.p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest" initial={{
+        <motion.p className="text-center text-sm font-semibold text-foreground uppercase tracking-widest" initial={{
         opacity: 0,
         y: 20
       }} whileInView={{

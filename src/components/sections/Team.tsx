@@ -1,8 +1,17 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Twitter, Linkedin } from "lucide-react";
+import ammarPhoto from "@/assets/ammar-montaser.jpeg";
 
 const teamMembers = [
+  {
+    name: "Ammar Montaser",
+    role: "Co-Founder & CEO",
+    bio: "Visionary leader driving innovation and growth",
+    initials: "AM",
+    image: ammarPhoto,
+    social: { twitter: "#", linkedin: "#" },
+  },
   {
     name: "Alex Chen",
     role: "Founder & Creative Director",
@@ -151,12 +160,20 @@ const Team = () => {
               
               {/* Avatar */}
               <motion.div 
-                className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300"
+                className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 overflow-hidden"
                 whileHover={{ scale: 1.1, rotate: 5 }}
               >
-                <span className="text-2xl font-bold text-primary">
-                  {member.initials}
-                </span>
+                {'image' in member && member.image ? (
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-2xl font-bold text-primary">
+                    {member.initials}
+                  </span>
+                )}
                 <div className="absolute inset-0 rounded-full border-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
               </motion.div>
 

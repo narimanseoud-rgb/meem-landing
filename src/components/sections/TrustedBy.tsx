@@ -56,42 +56,6 @@ const TrustedBy = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-transparent to-secondary/20" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-            Trusted By Industry Leaders
-          </span>
-        </motion.div>
-
-        {/* Logo grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-          {companies.map((company, index) => (
-            <motion.div
-              key={company.name}
-              className="group flex items-center justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="flex items-center justify-center w-full h-20 rounded-xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group-hover:bg-card/80">
-                <div className="flex items-center gap-3">
-                  {/* Logo placeholder */}
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm group-hover:bg-primary/20 transition-colors">
-                    {company.initials}
-                  </div>
-                  <span className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">
-                    {company.name}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
         {/* Stats row */}
         <motion.div

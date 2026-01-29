@@ -3,7 +3,7 @@ import { Instagram, Facebook, Mail, Linkedin, Phone } from "lucide-react";
 import meemCover from "@/assets/meem-cover.png";
 import meemTextLogo from "@/assets/meem-text-logo.png";
 import heroVideo from "@/assets/hero-video.mp4";
-import HeroFloatingCards from "./HeroFloatingCards";
+
 const socialLinks = [{
   icon: Instagram,
   href: "#",
@@ -67,8 +67,6 @@ const Hero = () => {
         <img src={meemCover} alt="" className="w-full h-auto object-cover" />
       </div>
 
-      {/* Floating cards on left side */}
-      <HeroFloatingCards />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">

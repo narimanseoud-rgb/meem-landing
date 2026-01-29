@@ -1,36 +1,28 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import videoCard1 from "@/assets/video-card-1.mp4";
+import videoCard2 from "@/assets/video-card-2.mp4";
+import videoCard3 from "@/assets/video-card-3.mp4";
 
-// Sample video URLs (using free stock videos - vertical format)
-const videoUrls = [
-  "https://videos.pexels.com/video-files/3015510/3015510-sd_506_960_25fps.mp4",
-  "https://videos.pexels.com/video-files/4057411/4057411-sd_506_960_25fps.mp4",
-  "https://videos.pexels.com/video-files/4536533/4536533-sd_506_960_25fps.mp4",
-  "https://videos.pexels.com/video-files/6394054/6394054-sd_506_960_24fps.mp4",
-  "https://videos.pexels.com/video-files/5537790/5537790-sd_506_960_25fps.mp4",
-  "https://videos.pexels.com/video-files/4434242/4434242-sd_506_960_24fps.mp4",
-];
+const videos = [videoCard1, videoCard2, videoCard3];
 
 const cardsRow1 = [
-  { id: 1, video: videoUrls[0] },
-  { id: 2, video: videoUrls[1] },
-  { id: 3, video: videoUrls[2] },
-  { id: 4, video: videoUrls[3] },
-  { id: 5, video: videoUrls[4] },
-  { id: 6, video: videoUrls[5] },
+  { id: 1, video: videos[0] },
+  { id: 2, video: videos[1] },
+  { id: 3, video: videos[2] },
+  { id: 4, video: videos[0] },
+  { id: 5, video: videos[1] },
+  { id: 6, video: videos[2] },
 ];
 
 const cardsRow2 = [
-  { id: 7, video: videoUrls[2] },
-  { id: 8, video: videoUrls[4] },
-  { id: 9, video: videoUrls[0] },
-  { id: 10, video: videoUrls[5] },
-  { id: 11, video: videoUrls[1] },
-  { id: 12, video: videoUrls[3] },
+  { id: 7, video: videos[2] },
+  { id: 8, video: videos[0] },
+  { id: 9, video: videos[1] },
+  { id: 10, video: videos[2] },
+  { id: 11, video: videos[0] },
+  { id: 12, video: videos[1] },
 ];
-
-// Duplicate for seamless loop
-const allCardsRow1 = [...cardsRow1, ...cardsRow1];
-const allCardsRow2 = [...cardsRow2, ...cardsRow2];
 
 const VideoCard = ({ video }: { video: string }) => (
   <div 
@@ -49,57 +41,44 @@ const VideoCard = ({ video }: { video: string }) => (
 );
 
 const HeroFloatingCards = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Column 1 moves down as user scrolls
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  // Column 2 moves up as user scrolls
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -300]);
+
   return (
-    <div 
-      className="absolute left-0 md:left-2 lg:left-8 top-0 h-[120vh] w-72 md:w-80 lg:w-96 pointer-events-none z-10 overflow-hidden"
-      style={{ transform: "rotate(-12deg)", transformOrigin: "top left" }}
-    >
-      {/* Gradient fade at top only */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[hsl(0,0%,8%)] to-transparent z-20" />
-      
-      {/* Two columns container */}
-      <div className="flex gap-3 md:gap-4 h-full">
-        {/* First column - scrolling down faster */}
-        <motion.div
-          className="flex flex-col gap-4"
-          animate={{
-            y: [0, -56 * cardsRow1.length * 4],
-          }}
-          transition={{
-            y: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 18,
-              ease: "linear",
-            },
-          }}
-        >
-          {allCardsRow1.map((card, index) => (
-            <VideoCard key={`row1-${card.id}-${index}`} video={card.video} />
-          ))}
-        </motion.div>
-        
-        {/* Second column - scrolling down slower */}
-        <motion.div
-          className="flex flex-col gap-4 mt-12"
-          animate={{
-            y: [0, -56 * cardsRow2.length * 4],
-          }}
-          transition={{
-            y: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 28,
-              ease: "linear",
-            },
-          }}
-        >
-          {allCardsRow2.map((card, index) => (
-            <VideoCard key={`row2-${card.id}-${index}`} video={card.video} />
-          ))}
-        </motion.div>
+    <section ref={containerRef} className="py-16 overflow-hidden bg-background">
+      <div className="container mx-auto px-6">
+        <div className="flex justify-center gap-4 md:gap-6 lg:gap-8">
+          {/* First column - moves down on scroll */}
+          <motion.div
+            className="flex flex-col gap-4"
+            style={{ y: y1 }}
+          >
+            {cardsRow1.map((card, index) => (
+              <VideoCard key={`row1-${card.id}-${index}`} video={card.video} />
+            ))}
+          </motion.div>
+          
+          {/* Second column - moves up on scroll */}
+          <motion.div
+            className="flex flex-col gap-4 mt-12"
+            style={{ y: y2 }}
+          >
+            {cardsRow2.map((card, index) => (
+              <VideoCard key={`row2-${card.id}-${index}`} video={card.video} />
+            ))}
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -20,7 +20,7 @@ const Header = () => {
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%)",
+        background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 100%)",
       }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -36,9 +36,9 @@ const Header = () => {
             <motion.img 
               src={meemLogo} 
               alt="Meme Media Hub Logo" 
-              className="h-10 w-auto"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="h-12 w-auto blur-[0.5px]"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 12, ease: "linear", repeat: Infinity }}
             />
             <img 
               src={meemTextLogo} 

@@ -19,16 +19,23 @@ const TrustedByScroll = () => {
 
   return (
     <section ref={containerRef} className="py-16 overflow-hidden bg-background">
-      <div className="container mx-auto px-6 mb-6">
-        <motion.p
-          className="text-center text-sm font-semibold text-foreground uppercase tracking-widest"
+      {/* Bold header */}
+      <div className="container mx-auto px-6 mb-12">
+        <motion.div
+          className="flex flex-col items-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Trusted By Leading Brands
-        </motion.p>
+          <div className="flex items-center gap-4">
+            <div className="h-px w-12 md:w-24 bg-gradient-to-r from-transparent to-primary" />
+            <h2 className="text-2xl md:text-4xl font-black text-foreground uppercase tracking-tight">
+              Trusted By <span className="text-primary">Leading Brands</span>
+            </h2>
+            <div className="h-px w-12 md:w-24 bg-gradient-to-l from-transparent to-primary" />
+          </div>
+        </motion.div>
       </div>
       
       {/* Logos Row - Auto-animating marquee */}

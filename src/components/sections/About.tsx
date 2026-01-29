@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import aboutCatImage from "@/assets/about-cat-image.png";
+import aboutImage from "@/assets/about-image.png";
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -35,7 +35,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <div>
-            <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-background border border-background/50 rounded-full bg-background/10" initial={{
+            <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/50 rounded-full bg-primary/10" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -57,11 +57,11 @@ const About = () => {
             duration: 0.8,
             delay: 0.1
           }}>
-              <span className="text-background">We Target the </span>
+              <span className="text-primary">We Target the </span>
               <span className="text-foreground font-black">Right Clients</span>
             </motion.h2>
 
-            <motion.p className="text-lg leading-relaxed text-foreground/90" initial={{
+            <motion.p className="text-lg leading-relaxed text-background" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -85,8 +85,8 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <img 
-              src={aboutCatImage} 
-              alt="Cat mascot" 
+              src={aboutImage} 
+              alt="About us" 
               className="max-w-full h-auto max-h-[500px] object-contain"
             />
           </motion.div>

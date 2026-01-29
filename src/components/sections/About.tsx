@@ -57,8 +57,8 @@ const About = () => {
             duration: 0.8,
             delay: 0.1
           }}>
-              <span className="text-background">Marketing for the </span>
-              <span className="text-foreground font-black">Meme Generation</span>
+              <span className="text-background">We Target the </span>
+              <span className="text-foreground font-black">Right Clients</span>
             </motion.h2>
 
             <motion.p className="text-lg leading-relaxed text-foreground/90" initial={{

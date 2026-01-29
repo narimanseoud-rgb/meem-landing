@@ -16,10 +16,10 @@ const Footer = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <footer ref={ref} className="relative py-16 bg-background overflow-hidden">
+    <footer ref={ref} className="relative py-16 overflow-hidden" style={{ backgroundColor: "#FF8800" }}>
       {/* Animated accent line */}
       <motion.div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
+        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-background to-transparent"
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -37,12 +37,12 @@ const Footer = () => {
             <img 
               src={meemLogo} 
               alt="Meme Media Hub Logo" 
-              className="h-10 w-auto"
+              className="h-10 w-auto brightness-0 invert"
             />
             <img 
               src={meemTextLogo} 
               alt="Meme Media Hub" 
-              className="h-6 w-auto"
+              className="h-6 w-auto brightness-0 invert"
             />
           </motion.div>
 
@@ -57,7 +57,7 @@ const Footer = () => {
               <motion.a
                 key={social.label}
                 href={social.href}
-                className="w-10 h-10 rounded-full bg-card border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-background/20 border border-background/30 flex items-center justify-center text-background hover:bg-background/30 hover:border-background/50 transition-all duration-300"
                 aria-label={social.label}
                 whileHover={{ scale: 1.1, y: -2 }}
                 initial={{ opacity: 0, y: 10 }}
@@ -71,7 +71,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <motion.p
-            className="text-sm text-muted-foreground"
+            className="text-sm text-background/80"
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}

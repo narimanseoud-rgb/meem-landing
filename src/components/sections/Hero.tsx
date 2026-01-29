@@ -111,32 +111,48 @@ const Hero = () => {
         </motion.p>
       </div>
 
-      {/* Social links - bottom right corner */}
-      <motion.div className="absolute bottom-8 right-6 md:right-10 z-20 flex flex-row gap-3" initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: 1,
-      x: 0
-    }} transition={{
-      delay: 1.2,
-      duration: 0.6
-    }}>
-        {socialLinks.map((social, index) => <motion.a key={social.label} href={social.href} className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-card transition-all duration-300" aria-label={social.label} whileHover={{
-        scale: 1.15,
-        y: -5
-      }} initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.4,
-        delay: 1.3 + index * 0.1
-      }}>
+      {/* Social links - left side, centered on mobile */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 md:bottom-8 z-20 flex flex-row gap-3 px-4 py-3 rounded-full bg-background/20 backdrop-blur-md border border-background/30" 
+        initial={{
+          opacity: 0,
+          x: -20
+        }} 
+        animate={{
+          opacity: 1,
+          x: 0
+        }} 
+        transition={{
+          delay: 1.2,
+          duration: 0.6
+        }}
+      >
+        {socialLinks.map((social, index) => (
+          <motion.a 
+            key={social.label} 
+            href={social.href} 
+            className="w-10 h-10 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-background hover:text-primary hover:bg-background/50 transition-all duration-300" 
+            aria-label={social.label} 
+            whileHover={{
+              scale: 1.15,
+              y: -5
+            }} 
+            initial={{
+              opacity: 0,
+              y: 20
+            }} 
+            animate={{
+              opacity: 1,
+              y: 0
+            }} 
+            transition={{
+              duration: 0.4,
+              delay: 1.3 + index * 0.1
+            }}
+          >
             <social.icon className="w-4 h-4" />
-          </motion.a>)}
+          </motion.a>
+        ))}
       </motion.div>
 
       {/* Scroll indicator */}

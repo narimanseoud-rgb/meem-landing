@@ -1,86 +1,89 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
-
-const projects = [
-  {
-    id: 1,
-    brand: "TechFlow",
-    description: "Viral product launch campaign that generated 2M+ impressions in 48 hours",
-    category: "Product Launch",
-    color: "from-blue-500/20 to-purple-500/20",
-  },
-  {
-    id: 2,
-    brand: "UrbanEats",
-    description: "Social media takeover that increased engagement by 340%",
-    category: "Social Media",
-    color: "from-green-500/20 to-emerald-500/20",
-  },
-  {
-    id: 3,
-    brand: "CryptoVault",
-    description: "Meme-driven awareness campaign reaching Gen Z crypto enthusiasts",
-    category: "Meme Marketing",
-    color: "from-yellow-500/20 to-orange-500/20",
-  },
-  {
-    id: 4,
-    brand: "StyleHouse",
-    description: "Complete brand refresh and influencer partnership strategy",
-    category: "Branding",
-    color: "from-pink-500/20 to-rose-500/20",
-  },
-  {
-    id: 5,
-    brand: "GamersUnite",
-    description: "Community building campaign that grew Discord to 100K+ members",
-    category: "Community",
-    color: "from-indigo-500/20 to-violet-500/20",
-  },
-  {
-    id: 6,
-    brand: "EcoLife",
-    description: "Sustainability-focused content strategy with viral TikTok series",
-    category: "Content Strategy",
-    color: "from-teal-500/20 to-cyan-500/20",
-  },
-];
-
+const projects = [{
+  id: 1,
+  brand: "TechFlow",
+  description: "Viral product launch campaign that generated 2M+ impressions in 48 hours",
+  category: "Product Launch",
+  color: "from-blue-500/20 to-purple-500/20"
+}, {
+  id: 2,
+  brand: "UrbanEats",
+  description: "Social media takeover that increased engagement by 340%",
+  category: "Social Media",
+  color: "from-green-500/20 to-emerald-500/20"
+}, {
+  id: 3,
+  brand: "CryptoVault",
+  description: "Meme-driven awareness campaign reaching Gen Z crypto enthusiasts",
+  category: "Meme Marketing",
+  color: "from-yellow-500/20 to-orange-500/20"
+}, {
+  id: 4,
+  brand: "StyleHouse",
+  description: "Complete brand refresh and influencer partnership strategy",
+  category: "Branding",
+  color: "from-pink-500/20 to-rose-500/20"
+}, {
+  id: 5,
+  brand: "GamersUnite",
+  description: "Community building campaign that grew Discord to 100K+ members",
+  category: "Community",
+  color: "from-indigo-500/20 to-violet-500/20"
+}, {
+  id: 6,
+  brand: "EcoLife",
+  description: "Sustainability-focused content strategy with viral TikTok series",
+  category: "Content Strategy",
+  color: "from-teal-500/20 to-cyan-500/20"
+}];
 const Portfolio = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section ref={ref} className="relative py-32 bg-secondary overflow-hidden">
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px"
+  });
+  return <section ref={ref} className="relative py-32 bg-secondary overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.span
-            className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/30 rounded-full bg-primary/10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/30 rounded-full bg-primary/10" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          duration: 0.6
+        }}>
             Our Work
           </motion.span>
 
-          <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            <span className="text-foreground">Campaigns That </span>
+          <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" initial={{
+          opacity: 0,
+          y: 30
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          duration: 0.8,
+          delay: 0.1
+        }}>
+            <span className="text-primary-foreground">Campaigns That </span>
             <span className="text-primary">Broke Through</span>
           </motion.h2>
 
-          <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          duration: 0.8,
+          delay: 0.2
+        }}>
             A selection of our most impactful work. Each project represents 
             a unique challenge solved with creativity and cultural intelligence.
           </motion.p>
@@ -88,15 +91,18 @@ const Portfolio = () => {
 
         {/* Portfolio grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-            >
+          {projects.map((project, index) => <motion.div key={project.id} className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer" initial={{
+          opacity: 0,
+          y: 40
+        }} animate={isInView ? {
+          opacity: 1,
+          y: 0
+        } : {}} transition={{
+          duration: 0.6,
+          delay: 0.1 + index * 0.1
+        }} whileHover={{
+          scale: 1.02
+        }}>
               {/* Background gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${project.color} bg-card`} />
               
@@ -110,11 +116,16 @@ const Portfolio = () => {
               
               {/* Content */}
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
+                <motion.div initial={{
+              y: 20,
+              opacity: 0
+            }} whileInView={{
+              y: 0,
+              opacity: 1
+            }} transition={{
+              duration: 0.5,
+              delay: 0.1
+            }}>
                   <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
                     {project.category}
                   </span>
@@ -133,12 +144,9 @@ const Portfolio = () => {
                   <ExternalLink className="w-4 h-4 text-primary" />
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Portfolio;

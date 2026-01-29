@@ -78,7 +78,7 @@ const About = () => {
               <span className="text-foreground font-black">Meme Generation</span>
             </motion.h2>
 
-            <motion.p className="text-lg mb-8 leading-relaxed text-foreground/90" initial={{
+            <motion.p className="text-lg leading-relaxed text-foreground/90" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -92,26 +92,11 @@ const About = () => {
               doesn't cut it anymore. In a world where attention is the new currency, 
               you need a team that understands how culture really works online.
             </motion.p>
-
-            <motion.p className="text-lg leading-relaxed text-foreground/90" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={isInView ? {
-            opacity: 1,
-            y: 0
-          } : {}} transition={{
-            duration: 0.8,
-            delay: 0.3
-          }}>
-              We blend deep internet knowledge with strategic thinking to create 
-              campaigns that don't just reach people—they resonate, they engage, 
-              and they convert. No corporate jargon, just results.
-            </motion.p>
           </div>
 
           {/* Right content - Feature cards */}
           <div className="grid sm:grid-cols-2 gap-6">
-            {features.map((feature, index) => <motion.div key={feature.title} className="p-6 bg-background rounded-xl border border-border/50 hover:border-foreground/30 transition-colors duration-300 group" initial={{
+            {features.map((feature, index) => <motion.div key={feature.title} className="p-6 rounded-xl border border-foreground/20 hover:border-foreground/40 transition-colors duration-300 group bg-transparent" initial={{
             opacity: 0,
             y: 30
           }} animate={isInView ? {
@@ -126,13 +111,13 @@ const About = () => {
               duration: 0.2
             }
           }}>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="w-16 h-16 rounded-lg bg-foreground/10 flex items-center justify-center mb-4 group-hover:bg-foreground/20 transition-colors">
+                  <feature.icon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-foreground">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {feature.description}
                 </p>
               </motion.div>)}

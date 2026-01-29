@@ -122,7 +122,7 @@ const Contact = () => {
                         : "border-border bg-background text-muted-foreground hover:border-primary/50"
                     }`}
                   >
-                    <div className="font-semibold mb-1">Brand / Agency</div>
+                    <div className="font-semibold mb-1">Brand</div>
                     <div className="text-xs opacity-70">Looking for marketing services</div>
                   </button>
                   <button

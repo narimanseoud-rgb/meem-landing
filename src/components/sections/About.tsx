@@ -1,23 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Zap, TrendingUp, Users, Sparkles } from "lucide-react";
-const features = [{
-  icon: Zap,
-  title: "Internet Culture Experts",
-  description: "We live online. We understand the language, the trends, and the moments that matter."
-}, {
-  icon: TrendingUp,
-  title: "Viral Strategy",
-  description: "Every campaign is built for shareability. We engineer content that spreads organically."
-}, {
-  icon: Users,
-  title: "Community Building",
-  description: "We don't just reach audiences—we build engaged communities around your brand."
-}, {
-  icon: Sparkles,
-  title: "Creative Excellence",
-  description: "Bold ideas, flawless execution. Every piece of content is crafted to stand out."
-}];
+import aboutHandImage from "@/assets/about-hand-image.png";
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -52,7 +35,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <div>
-            <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-foreground border border-foreground/30 rounded-full bg-foreground/10" initial={{
+            <motion.span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-background border border-background/50 rounded-full bg-background/10" initial={{
             opacity: 0,
             y: 20
           }} animate={isInView ? {
@@ -94,34 +77,19 @@ const About = () => {
             </motion.p>
           </div>
 
-          {/* Right content - Feature cards */}
-          <div className="grid sm:grid-cols-2 gap-6">
-            {features.map((feature, index) => <motion.div key={feature.title} className="p-6 rounded-xl border border-foreground/20 hover:border-foreground/40 transition-colors duration-300 group bg-transparent" initial={{
-            opacity: 0,
-            y: 30
-          }} animate={isInView ? {
-            opacity: 1,
-            y: 0
-          } : {}} transition={{
-            duration: 0.6,
-            delay: 0.2 + index * 0.1
-          }} whileHover={{
-            y: -5,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-                <div className="w-16 h-16 rounded-lg bg-foreground/10 flex items-center justify-center mb-4 group-hover:bg-foreground/20 transition-colors">
-                  <feature.icon className="w-8 h-8 text-foreground" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-background">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-foreground/70">
-                  {feature.description}
-                </p>
-              </motion.div>)}
-          </div>
+          {/* Right content - Image */}
+          <motion.div 
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <img 
+              src={aboutHandImage} 
+              alt="Hand with smiley face" 
+              className="max-w-full h-auto max-h-[500px] object-contain"
+            />
+          </motion.div>
         </div>
       </div>
     </section>;

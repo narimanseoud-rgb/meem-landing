@@ -14,7 +14,7 @@ const industries = [
   "Food & Beverage",
   "Entertainment",
   "Health & Wellness",
-  "Finance",
+  "Real Estate",
   "Other",
 ];
 

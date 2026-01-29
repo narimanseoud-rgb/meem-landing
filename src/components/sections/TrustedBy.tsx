@@ -51,7 +51,7 @@ const TrustedBy = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-24 bg-background overflow-hidden">
+    <section ref={ref} className="relative py-16 bg-background overflow-hidden">
       {/* Background accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-transparent to-secondary/20" />
 
@@ -59,7 +59,7 @@ const TrustedBy = () => {
 
         {/* Stats row */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-border/50"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-border/50"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}

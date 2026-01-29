@@ -64,10 +64,10 @@ const CreatorCTA = () => {
         <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2 overflow-hidden">
           {/* Rotating Meem logo in bottom right corner - bigger */}
           <motion.div
-            className="absolute bottom-4 right-4 w-48 h-48 md:w-64 md:h-64 pointer-events-none"
+            className="absolute bottom-4 right-4 w-56 h-56 md:w-72 md:h-72 pointer-events-none"
             animate={{ rotate: 360 }}
             transition={{ 
-              duration: 8, 
+              duration: 5, 
               repeat: Infinity, 
               ease: "linear" 
             }}
@@ -75,7 +75,7 @@ const CreatorCTA = () => {
             <img
               src={meemLogoRotating}
               alt=""
-              className="w-full h-full object-contain opacity-20"
+              className="w-full h-full object-contain opacity-25"
             />
           </motion.div>
 

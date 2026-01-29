@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-import { Play, Pause } from "lucide-react";
+import { useRef, useState, useCallback, useEffect } from "react";
+import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import videoCard1 from "@/assets/video-card-1.mp4";
 import videoCard2 from "@/assets/video-card-2.mp4";
 import videoCard3 from "@/assets/video-card-3.mp4";
@@ -9,17 +9,6 @@ import videoCard5 from "@/assets/video-card-5.mp4";
 import videoCard6 from "@/assets/video-card-6.mp4";
 
 const videos = [videoCard1, videoCard2, videoCard3, videoCard4, videoCard5, videoCard6];
-
-const cardsRow = [
-  { id: 1, video: videos[0] },
-  { id: 2, video: videos[1] },
-  { id: 3, video: videos[2] },
-  { id: 4, video: videos[3] },
-  { id: 5, video: videos[4] },
-  { id: 6, video: videos[5] },
-  { id: 7, video: videos[0] },
-  { id: 8, video: videos[1] },
-];
 
 const VideoCard = ({ video }: { video: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -53,7 +42,7 @@ const VideoCard = ({ video }: { video: string }) => {
 
   return (
     <div 
-      className="relative w-48 md:w-64 lg:w-80 h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden shrink-0 shadow-lg group cursor-pointer"
+      className="relative w-64 md:w-80 lg:w-96 h-80 md:h-96 lg:h-[28rem] rounded-xl overflow-hidden shrink-0 shadow-lg group cursor-pointer"
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -82,38 +71,81 @@ const VideoCard = ({ video }: { video: string }) => {
 };
 
 const HeroFloatingCards = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Parallax - Row moves right as user scrolls
-  const x = useTransform(scrollYProgress, [0, 1], [-300, 500]);
+  const checkScrollButtons = useCallback(() => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkScrollButtons();
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", checkScrollButtons);
+      return () => container.removeEventListener("scroll", checkScrollButtons);
+    }
+  }, [checkScrollButtons]);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
-    <section ref={containerRef} className="py-16 overflow-hidden bg-background">
-      <div className="py-4">
-        {/* Single row - moves right on scroll */}
-        <div className="relative px-12">
-          {/* Black to transparent gradients */}
-          <div 
-            className="absolute -left-12 top-0 bottom-0 w-64 md:w-80 z-10 pointer-events-none" 
-            style={{ background: "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0.9) 50%, transparent 100%)" }} 
-          />
-          <div 
-            className="absolute -right-12 top-0 bottom-0 w-64 md:w-80 z-10 pointer-events-none" 
-            style={{ background: "linear-gradient(to left, hsl(var(--background)) 0%, hsl(var(--background) / 0.9) 50%, transparent 100%)" }} 
-          />
-          <motion.div
-            className="flex gap-6 px-16"
-            style={{ x }}
-          >
-            {cardsRow.map((card, index) => (
-              <VideoCard key={`row-${card.id}-${index}`} video={card.video} />
-            ))}
-          </motion.div>
+    <section className="py-16 overflow-hidden bg-background">
+      <div className="relative">
+        {/* Black to transparent gradients */}
+        <div 
+          className="absolute left-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
+          style={{ background: "linear-gradient(to right, hsl(var(--foreground)) 0%, transparent 100%)" }} 
+        />
+        <div 
+          className="absolute right-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
+          style={{ background: "linear-gradient(to left, hsl(var(--foreground)) 0%, transparent 100%)" }} 
+        />
+
+        {/* Left Arrow */}
+        <Button
+          variant="outline"
+          size="icon"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/90 backdrop-blur-sm border-border hover:bg-background shadow-lg disabled:opacity-50"
+          onClick={() => scroll("left")}
+          disabled={!canScrollLeft}
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+
+        {/* Right Arrow */}
+        <Button
+          variant="outline"
+          size="icon"
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/90 backdrop-blur-sm border-border hover:bg-background shadow-lg disabled:opacity-50"
+          onClick={() => scroll("right")}
+          disabled={!canScrollRight}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </Button>
+
+        {/* Scrollable container */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-6 px-16 md:px-24 overflow-x-auto scrollbar-hide justify-start"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {videos.map((video, index) => (
+            <VideoCard key={`video-${index}`} video={video} />
+          ))}
         </div>
       </div>
     </section>

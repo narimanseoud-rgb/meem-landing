@@ -24,7 +24,7 @@ const About = () => {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="relative py-32 overflow-hidden" style={{ backgroundColor: "#FF8800" }}>
+  return <section ref={ref} className="relative py-32 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, #FF8800 30%, #FF8800 70%, transparent 100%)" }}>
       {/* Abstract accent shapes */}
       <motion.div className="absolute top-20 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" initial={{
       opacity: 0,

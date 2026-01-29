@@ -11,19 +11,20 @@ const About = () => {
 
   return (
     <section ref={ref} className="relative py-32 overflow-visible">
-      {/* Full-width background image */}
-      <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2">
+      {/* Orange gradient background - behind the image */}
+      <div 
+        className="absolute inset-0 w-screen left-1/2 -translate-x-1/2"
+        style={{ 
+          background: "linear-gradient(to bottom, transparent 0%, rgba(255, 136, 0, 0.9) 20%, rgba(255, 136, 0, 1) 50%, rgba(255, 136, 0, 0.9) 80%, transparent 100%)" 
+        }}
+      />
+      
+      {/* Full-width background image - on top of gradient */}
+      <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2 flex items-end justify-end pointer-events-none">
         <img 
           src={aboutImage} 
           alt="About background" 
-          className="w-full h-full object-cover object-top"
-        />
-        {/* Orange gradient overlay */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            background: "linear-gradient(to bottom, rgba(255, 136, 0, 0.85) 0%, rgba(255, 136, 0, 0.7) 50%, rgba(255, 136, 0, 0.9) 100%)" 
-          }} 
+          className="h-full w-auto object-contain object-right-bottom"
         />
       </div>
 
@@ -59,7 +60,7 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}} 
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <span className="text-background">We Target the </span>
+            <span className="text-primary">We Target the </span>
             <span className="text-foreground font-black">Right Clients</span>
           </motion.h2>
 

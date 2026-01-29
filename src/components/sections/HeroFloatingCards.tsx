@@ -105,21 +105,21 @@ const HeroFloatingCards = () => {
   return (
     <section className="py-16 overflow-hidden bg-background">
       <div className="relative">
-        {/* Black to transparent gradients */}
+        {/* White to transparent gradients */}
         <div 
           className="absolute left-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
-          style={{ background: "linear-gradient(to right, hsl(var(--foreground)) 0%, transparent 100%)" }} 
+          style={{ background: "linear-gradient(to right, hsl(var(--background)) 0%, transparent 100%)" }} 
         />
         <div 
           className="absolute right-0 top-0 bottom-0 w-32 md:w-48 z-10 pointer-events-none" 
-          style={{ background: "linear-gradient(to left, hsl(var(--foreground)) 0%, transparent 100%)" }} 
+          style={{ background: "linear-gradient(to left, hsl(var(--background)) 0%, transparent 100%)" }} 
         />
 
         {/* Left Arrow */}
         <Button
           variant="outline"
           size="icon"
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/90 backdrop-blur-sm border-border hover:bg-background shadow-lg disabled:opacity-50"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/90 backdrop-blur-sm border-border hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg disabled:opacity-50 transition-colors"
           onClick={() => scroll("left")}
           disabled={!canScrollLeft}
         >
@@ -130,17 +130,17 @@ const HeroFloatingCards = () => {
         <Button
           variant="outline"
           size="icon"
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/90 backdrop-blur-sm border-border hover:bg-background shadow-lg disabled:opacity-50"
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-background/90 backdrop-blur-sm border-border hover:bg-primary hover:text-primary-foreground hover:border-primary shadow-lg disabled:opacity-50 transition-colors"
           onClick={() => scroll("right")}
           disabled={!canScrollRight}
         >
           <ChevronRight className="h-6 w-6" />
         </Button>
 
-        {/* Scrollable container */}
+        {/* Scrollable container - centered */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-6 px-16 md:px-24 overflow-x-auto scrollbar-hide justify-start"
+          className="flex gap-6 px-16 md:px-24 overflow-x-auto scrollbar-hide justify-center"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {videos.map((video, index) => (

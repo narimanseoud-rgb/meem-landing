@@ -35,7 +35,7 @@ const allCardsRow2 = [...cardsRow2, ...cardsRow2];
 
 const VideoCard = ({ id, video }: { id: number; video: string }) => (
   <div 
-    className="w-24 md:w-28 lg:w-32 h-36 md:h-44 lg:h-48 rounded-xl overflow-hidden shrink-0"
+    className="w-36 md:w-44 lg:w-52 h-52 md:h-64 lg:h-72 rounded-2xl overflow-hidden shrink-0"
     style={{
       boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 12px 24px -8px rgba(0, 0, 0, 0.4)"
     }}
@@ -57,13 +57,13 @@ const VideoCard = ({ id, video }: { id: number; video: string }) => (
       
       {/* Play button indicator */}
       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
-          <Play className="w-3 h-3 md:w-4 md:h-4 text-primary-foreground fill-primary-foreground ml-0.5" />
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+          <Play className="w-4 h-4 md:w-5 md:h-5 text-primary-foreground fill-primary-foreground ml-0.5" />
         </div>
       </div>
       
       {/* Video duration badge */}
-      <div className="absolute top-1.5 right-1.5 px-1 py-0.5 bg-background/70 backdrop-blur-sm rounded text-[8px] md:text-[10px] text-foreground/80 font-medium">
+      <div className="absolute top-2 right-2 px-1.5 py-0.5 bg-background/70 backdrop-blur-sm rounded text-[10px] md:text-xs text-foreground/80 font-medium">
         0:{15 + id * 3}
       </div>
     </div>
@@ -73,25 +73,25 @@ const VideoCard = ({ id, video }: { id: number; video: string }) => (
 const HeroFloatingCards = () => {
   return (
     <div 
-      className="absolute left-0 md:left-4 lg:left-8 top-0 bottom-0 w-56 md:w-72 lg:w-80 pointer-events-none z-10 overflow-hidden"
+      className="absolute left-0 md:left-4 lg:left-12 top-0 bottom-0 w-80 md:w-96 lg:w-[28rem] pointer-events-none z-10 overflow-hidden"
       style={{ transform: "rotate(-12deg)", transformOrigin: "top left" }}
     >
       {/* Gradient fade at top only */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[hsl(0,0%,8%)] to-transparent z-20" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[hsl(0,0%,8%)] to-transparent z-20" />
       
-      {/* Two columns container */}
-      <div className="flex gap-3 md:gap-4 h-[150%] -mt-20">
+      {/* Two columns container - extends beyond the hero */}
+      <div className="flex gap-4 md:gap-5 lg:gap-6 h-[200%] -mt-16">
         {/* First column - scrolling down faster */}
         <motion.div
-          className="flex flex-col gap-4 md:gap-5"
+          className="flex flex-col gap-5 md:gap-6"
           animate={{
-            y: [0, -52 * cardsRow1.length * 4],
+            y: [0, -78 * cardsRow1.length * 4],
           }}
           transition={{
             y: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 18,
+              duration: 20,
               ease: "linear",
             },
           }}
@@ -103,15 +103,15 @@ const HeroFloatingCards = () => {
         
         {/* Second column - scrolling down slower */}
         <motion.div
-          className="flex flex-col gap-4 md:gap-5 mt-12"
+          className="flex flex-col gap-5 md:gap-6 mt-16"
           animate={{
-            y: [0, -52 * cardsRow2.length * 4],
+            y: [0, -78 * cardsRow2.length * 4],
           }}
           transition={{
             y: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 28,
+              duration: 32,
               ease: "linear",
             },
           }}

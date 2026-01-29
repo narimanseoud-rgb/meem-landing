@@ -124,7 +124,7 @@ const HeroFloatingCards = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}} 
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <span className="text-primary-foreground">Campaigns That </span>
+          <span className="text-foreground">Campaigns That </span>
           <span className="text-primary">Broke Through</span>
         </motion.h2>
 

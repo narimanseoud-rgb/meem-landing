@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ugcPhoneVideo from "@/assets/ugc-phone-video.mp4";
 
 const stats = [
   "350+ UGC Pieces Created – We create content that performs.",
@@ -16,7 +17,7 @@ const UGCSection = () => {
 
   return (
     <section ref={ref} className="py-20 bg-background overflow-hidden">
-      <div className="container mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <motion.div
@@ -107,12 +108,17 @@ const UGCSection = () => {
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-foreground rounded-full z-10" />
                 
                 {/* Screen */}
-                <div className="relative bg-primary rounded-[2.5rem] overflow-hidden aspect-[9/19]">
-                  {/* Decorative content */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-9xl font-bold text-primary-foreground/20 rotate-12">%</div>
-                  </div>
-                  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary-foreground/20 rounded-full blur-2xl" />
+                <div className="relative bg-foreground rounded-[2.5rem] overflow-hidden aspect-[9/19]">
+                  {/* Video background */}
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    <source src={ugcPhoneVideo} type="video/mp4" />
+                  </video>
                 </div>
               </div>
 

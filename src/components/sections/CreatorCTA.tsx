@@ -62,12 +62,12 @@ const CreatorCTA = () => {
 
         {/* Right side - Dark background with text and rotating Meem logo */}
         <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2 overflow-hidden">
-          {/* Rotating Meem logo in background - smaller and faster */}
+          {/* Rotating Meem logo in bottom right corner */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none p-16"
+            className="absolute bottom-4 right-4 w-32 h-32 md:w-48 md:h-48 pointer-events-none"
             animate={{ rotate: 360 }}
             transition={{ 
-              duration: 12, 
+              duration: 8, 
               repeat: Infinity, 
               ease: "linear" 
             }}
@@ -75,7 +75,7 @@ const CreatorCTA = () => {
             <img
               src={meemLogoRotating}
               alt=""
-              className="w-[70%] h-auto object-contain opacity-15"
+              className="w-full h-full object-contain opacity-20"
             />
           </motion.div>
 
@@ -115,10 +115,11 @@ const CreatorCTA = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <Button
+              asChild
               size="lg"
               className="px-10 py-6 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              GET STARTED
+              <a href="#contact">GET STARTED</a>
             </Button>
           </motion.div>
         </div>

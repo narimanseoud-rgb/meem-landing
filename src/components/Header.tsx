@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import meemLogo from "@/assets/meem-logo.png";
 import meemTextLogo from "@/assets/meem-text-logo.png";
+import logoMGirl from "@/assets/logo-m-girl.png";
 
 const navLinks = [
   { label: "About Us", href: "#about" },
@@ -80,46 +81,75 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-white z-50 relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
-        <motion.nav
-          className={`md:hidden overflow-hidden ${mobileMenuOpen ? "pb-6 bg-background/90 backdrop-blur-md rounded-b-xl" : ""}`}
-          initial={false}
-          animate={{
-            height: mobileMenuOpen ? "auto" : 0,
-            opacity: mobileMenuOpen ? 1 : 0,
-          }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
-          <div className="flex flex-col gap-4 pt-4 border-t border-border/20 px-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            <Button
-              asChild
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
-            >
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                Contact Us
-              </a>
-            </Button>
-          </div>
-        </motion.nav>
       </div>
+
+      {/* Full Screen Mobile Navigation */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 md:hidden"
+            style={{ backgroundColor: "#FF8800" }}
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+          >
+            {/* Navigation Links */}
+            <nav className="flex flex-col items-center justify-center h-full gap-8 px-6">
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  className="text-3xl font-bold text-foreground hover:text-background transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.4 }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="mt-4 bg-foreground text-primary hover:bg-foreground/90 px-10 py-6 text-lg font-bold"
+                >
+                  <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                    Contact Us
+                  </a>
+                </Button>
+              </motion.div>
+            </nav>
+
+            {/* M Logo at the bottom */}
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 flex justify-center overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 0.2, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <img
+                src={logoMGirl}
+                alt=""
+                className="w-[80%] h-auto object-contain translate-y-1/4"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

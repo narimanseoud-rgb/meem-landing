@@ -35,17 +35,17 @@ const CreatorCTA = () => {
             />
           </motion.div>
 
-          {/* M logo behind the girl at the bottom */}
+          {/* M logo behind the girl at the bottom - overflowing */}
           <motion.div
-            className="absolute bottom-0 left-0 right-0 flex items-end justify-center"
+            className="absolute -bottom-20 left-0 right-0 flex items-end justify-center"
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 0.4, y: 0 } : {}}
+            animate={isInView ? { opacity: 0.7, y: 0 } : {}}
             transition={{ duration: 1 }}
           >
             <img
               src={logoMGirl}
               alt=""
-              className="w-[80%] h-auto object-contain"
+              className="w-[120%] h-auto object-contain"
             />
           </motion.div>
 
@@ -62,12 +62,12 @@ const CreatorCTA = () => {
 
         {/* Right side - Dark background with text and rotating Meem logo */}
         <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2 overflow-hidden">
-          {/* Rotating Meem logo in background */}
+          {/* Rotating Meem logo in background - smaller and faster */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            className="absolute inset-0 flex items-center justify-center pointer-events-none p-16"
             animate={{ rotate: 360 }}
             transition={{ 
-              duration: 30, 
+              duration: 12, 
               repeat: Infinity, 
               ease: "linear" 
             }}
@@ -75,7 +75,7 @@ const CreatorCTA = () => {
             <img
               src={meemLogoRotating}
               alt=""
-              className="w-[120%] h-auto object-contain opacity-15"
+              className="w-[70%] h-auto object-contain opacity-15"
             />
           </motion.div>
 

@@ -156,16 +156,16 @@ const Team = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-24 bg-background overflow-hidden">
+    <section ref={ref} className="relative py-24 bg-foreground overflow-hidden">
       {/* Background accents */}
       <motion.div
-        className="absolute top-0 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+        className="absolute top-0 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+        className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -190,7 +190,7 @@ const Team = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <motion.span 
-              className="text-foreground inline-block"
+              className="text-background inline-block"
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -208,7 +208,7 @@ const Team = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg text-background/70 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}

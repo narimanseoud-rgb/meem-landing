@@ -11,7 +11,15 @@ const About = () => {
 
   return (
     <section ref={ref} className="relative min-h-[80vh] overflow-hidden flex items-center">
-      {/* Full-width background image - girl spanning edge to edge */}
+      {/* Soft gradient background - behind the girl */}
+      <div 
+        className="absolute inset-0 w-screen left-1/2 -translate-x-1/2"
+        style={{ 
+          background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%)" 
+        }}
+      />
+
+      {/* Full-width background image - girl spanning edge to edge, on top of gradient */}
       <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2">
         <img 
           src={aboutImage} 
@@ -20,19 +28,11 @@ const About = () => {
         />
       </div>
 
-      {/* Dark gradient overlay - transparent at top, dark at bottom */}
-      <div 
-        className="absolute inset-0 w-screen left-1/2 -translate-x-1/2"
-        style={{ 
-          background: "linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.9) 100%)" 
-        }}
-      />
-
       {/* Content positioned at the bottom */}
       <div className="container mx-auto px-6 relative z-10 py-32">
         <div className="max-w-2xl mt-auto">
           <motion.span 
-            className="inline-block px-4 py-2 mb-6 text-sm font-medium text-background border border-background/50 rounded-full bg-background/10" 
+            className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/50 rounded-full bg-primary/10" 
             initial={{ opacity: 0, y: 20 }} 
             animate={isInView ? { opacity: 1, y: 0 } : {}} 
             transition={{ duration: 0.6 }}

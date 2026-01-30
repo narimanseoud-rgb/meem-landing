@@ -157,19 +157,6 @@ const Team = () => {
 
   return (
     <section ref={ref} className="relative py-24 bg-foreground overflow-hidden">
-      {/* Background accents */}
-      <motion.div
-        className="absolute top-0 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}

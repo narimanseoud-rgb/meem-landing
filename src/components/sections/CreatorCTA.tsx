@@ -62,12 +62,12 @@ const CreatorCTA = () => {
 
         {/* Right side - Dark background with text and rotating Meem logo */}
         <div className="relative bg-foreground flex flex-col justify-center px-8 md:px-12 lg:px-16 py-16 lg:py-20 order-1 lg:order-2 overflow-hidden">
-          {/* Rotating Meem logo in bottom right corner - bigger */}
+          {/* Rotating Meem logo in bottom right corner - bigger, slower, blurred */}
           <motion.div
-            className="absolute bottom-4 right-4 w-56 h-56 md:w-72 md:h-72 pointer-events-none"
+            className="absolute bottom-4 right-4 w-72 h-72 md:w-96 md:h-96 pointer-events-none"
             animate={{ rotate: 360 }}
             transition={{ 
-              duration: 5, 
+              duration: 15, 
               repeat: Infinity, 
               ease: "linear" 
             }}
@@ -75,7 +75,7 @@ const CreatorCTA = () => {
             <img
               src={meemLogoRotating}
               alt=""
-              className="w-full h-full object-contain opacity-25"
+              className="w-full h-full object-contain opacity-25 blur-[1px]"
             />
           </motion.div>
 

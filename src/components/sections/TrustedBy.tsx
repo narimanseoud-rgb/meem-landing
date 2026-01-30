@@ -59,7 +59,7 @@ const TrustedBy = () => {
 
         {/* Stats row */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-border/50"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}

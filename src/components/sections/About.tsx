@@ -11,15 +11,7 @@ const About = () => {
 
   return (
     <section ref={ref} className="relative min-h-[80vh] overflow-hidden flex items-center">
-      {/* Soft gradient background - behind the girl */}
-      <div 
-        className="absolute inset-0 w-screen left-1/2 -translate-x-1/2"
-        style={{ 
-          background: "linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%)" 
-        }}
-      />
-
-      {/* Full-width background image - girl spanning edge to edge, on top of gradient */}
+      {/* Full-width background image - girl spanning edge to edge */}
       <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2">
         <img 
           src={aboutImage} 
@@ -27,6 +19,14 @@ const About = () => {
           className="w-full h-full object-cover object-center"
         />
       </div>
+
+      {/* Dark gradient overlay - transparent at top, dark at bottom */}
+      <div 
+        className="absolute inset-0 w-screen left-1/2 -translate-x-1/2"
+        style={{ 
+          background: "linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.9) 100%)" 
+        }}
+      />
 
       {/* Content positioned at the bottom */}
       <div className="container mx-auto px-6 relative z-10 py-32">

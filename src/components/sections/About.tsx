@@ -10,13 +10,13 @@ const About = () => {
   });
 
   return (
-    <section ref={ref} className="relative min-h-[80vh] overflow-hidden flex items-center">
-      {/* Full-width background image - girl spanning edge to edge */}
-      <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2">
+    <section ref={ref} className="relative min-h-[100vh] overflow-hidden flex items-center">
+      {/* Full-width background image - scaled up for bigger presence */}
+      <div className="absolute inset-0 w-screen left-1/2 -translate-x-1/2 scale-125">
         <img 
           src={aboutImage} 
           alt="About background" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-top"
         />
       </div>
 

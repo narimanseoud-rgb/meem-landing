@@ -41,15 +41,15 @@ const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden bg-foreground">
+    <section ref={ref} className="relative py-32 overflow-hidden" style={{ backgroundColor: "#FF8800" }}>
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-transparent to-background/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/5 via-transparent to-foreground/5" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.span
-            className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/30 rounded-full bg-primary/10"
+            className="inline-block px-4 py-2 mb-6 text-sm font-medium text-background border border-background/50 rounded-full bg-background/10"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -64,11 +64,11 @@ const Services = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <span className="text-background">Services That </span>
-            <span className="text-primary">Move Culture</span>
+            <span className="text-foreground">Move Culture</span>
           </motion.h2>
 
           <motion.p
-            className="text-lg text-background/70 max-w-2xl mx-auto"
+            className="text-lg text-foreground/90 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}

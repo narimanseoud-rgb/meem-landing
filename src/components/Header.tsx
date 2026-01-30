@@ -64,7 +64,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button - Animated */}
           <motion.div
             className="hidden md:block"
             initial={{ opacity: 0, x: 20 }}
@@ -73,9 +73,36 @@ const Header = () => {
           >
             <Button
               asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              className="relative bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/40 transition-all duration-300 overflow-hidden group"
             >
-              <a href="#contact">Contact Us</a>
+              <a href="#contact">
+                <span className="relative z-10">Contact Us</span>
+                {/* Animated glow effect */}
+                <motion.span 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "200%" }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    repeatDelay: 1,
+                    ease: "easeInOut" 
+                  }}
+                />
+                {/* Pulse ring effect */}
+                <motion.span 
+                  className="absolute inset-0 rounded-md border-2 border-primary"
+                  animate={{ 
+                    scale: [1, 1.15, 1.15],
+                    opacity: [0.8, 0, 0]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeOut" 
+                  }}
+                />
+              </a>
             </Button>
           </motion.div>
 

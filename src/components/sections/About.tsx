@@ -28,9 +28,9 @@ const About = () => {
         }}
       />
 
-      {/* Content positioned at the bottom */}
+      {/* Content centered */}
       <div className="container mx-auto px-6 relative z-10 py-32">
-        <div className="max-w-2xl mt-auto">
+        <div className="max-w-2xl mx-auto text-center">
           <motion.span 
             className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary border border-primary/50 rounded-full bg-primary/10" 
             initial={{ opacity: 0, y: 20 }} 

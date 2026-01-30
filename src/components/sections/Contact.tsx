@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Send } from "lucide-react";
+import ammarPhoto from "@/assets/ammar-montaser.jpeg";
 
 type UserType = "brand" | "creator" | "";
 
@@ -67,7 +68,7 @@ const Contact = () => {
             </motion.h2>
 
             <motion.p
-              className="text-lg text-muted-foreground mb-8 leading-relaxed"
+              className="text-lg text-background mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -84,16 +85,18 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center text-xs font-medium text-primary"
-                  >
-                    {["JD", "SK", "MR"][i - 1]}
-                  </div>
-                ))}
+                <img
+                  src="/nariman-sarud.png"
+                  alt="Nariman Sarud"
+                  className="w-10 h-10 rounded-full border-2 border-background object-cover"
+                />
+                <img
+                  src={ammarPhoto}
+                  alt="Ammar Montaser"
+                  className="w-10 h-10 rounded-full border-2 border-background object-cover"
+                />
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-background">
                 Our team is ready to help
               </span>
             </motion.div>

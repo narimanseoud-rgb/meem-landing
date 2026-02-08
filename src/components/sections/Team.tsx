@@ -2,19 +2,20 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Twitter, Linkedin } from "lucide-react";
 import ammarPhoto from "@/assets/ammar-montaser.jpeg";
+import narimanPhoto from "@/assets/nariman-seoud.jpeg";
 
 const teamMembers = [
   {
-    name: "Nariman Sarud",
+    name: "Nariman Seoud",
     role: "Founder & CEO",
     bio: "Visionary leader driving innovation and growth",
     initials: "NS",
-    image: "/nariman-sarud.png",
+    image: narimanPhoto,
     social: { twitter: "#", linkedin: "#" },
   },
   {
     name: "Ammar Montaser",
-    role: "Technical Team Lead",
+    role: "Director of Digital Experience",
     bio: "Building the tech behind viral campaigns",
     initials: "AM",
     image: ammarPhoto,

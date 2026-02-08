@@ -56,7 +56,7 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}} 
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Meme Media Hub was born from a simple truth: traditional marketing 
+            Meem Media was born from a simple truth: traditional marketing 
             doesn't cut it anymore. In a world where attention is the new currency, 
             you need a team that understands how culture really works online.
           </motion.p>

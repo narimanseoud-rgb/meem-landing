@@ -27,6 +27,7 @@ const industries = [
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(20, "Phone number must be less than 20 characters").optional(),
   company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
   industry: z.string().optional(),
   portfolio: z.string().trim().max(500, "Portfolio link must be less than 500 characters").optional(),
@@ -279,6 +280,22 @@ const Contact = () => {
                   )}
                 </motion.div>
               </div>
+
+              <motion.div
+                className="space-y-2"
+                animate={focused === "phone" ? { scale: 1.02 } : { scale: 1 }}
+                transition={{ duration: 0.2 }}
+              >
+                <label className="text-sm font-medium text-foreground">Phone Number <span className="text-muted-foreground">(optional)</span></label>
+                <Input
+                  {...register("phone")}
+                  type="tel"
+                  placeholder="+1 (555) 000-0000"
+                  className="bg-background border-border focus:border-primary transition-colors"
+                  onFocus={() => setFocused("phone")}
+                  onBlur={() => setFocused(null)}
+                />
+              </motion.div>
 
               {/* Conditional fields based on user type */}
               {userType === "brand" && (

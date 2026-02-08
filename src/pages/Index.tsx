@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
-import TrustedByScroll from "@/components/sections/TrustedByScroll";
+
 import ScrollingText from "@/components/sections/ScrollingText";
 import UGCSection from "@/components/sections/UGCSection";
 import HeroFloatingCards from "@/components/sections/HeroFloatingCards";
@@ -29,7 +29,6 @@ const Index = () => {
     <main>
       <Header />
       <Hero />
-      <TrustedByScroll />
       <UGCSection />
       <ScrollingText words={topScrollingWords} direction="left" />
       <HeroFloatingCards />

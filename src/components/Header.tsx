@@ -10,7 +10,6 @@ const navLinks = [
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const Header = () => {
@@ -33,17 +32,10 @@ const Header = () => {
             href="#"
             className="flex items-center gap-3 group"
           >
-            <motion.img 
+            <img 
               src={meemLogo} 
               alt="Meme Media Hub Logo" 
               className="h-12 w-auto blur-[0.5px]"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, ease: "linear", repeat: Infinity }}
-            />
-            <img 
-              src={meemTextLogo} 
-              alt="Meme Media Hub" 
-              className="h-4 w-auto hidden sm:block"
             />
           </a>
 
@@ -76,7 +68,7 @@ const Header = () => {
               className="relative bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/40 transition-all duration-300 overflow-hidden group"
             >
               <a href="#contact">
-                <span className="relative z-10">Contact Us</span>
+                <span className="relative z-10">Start Project</span>
                 {/* Animated glow effect */}
                 <motion.span 
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"

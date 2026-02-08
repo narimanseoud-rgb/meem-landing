@@ -7,9 +7,10 @@ import meemTextLogo from "@/assets/meem-text-logo.png";
 import logoMGirl from "@/assets/logo-m-girl.png";
 
 const navLinks = [
-  { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "About Us", href: "#about" },
+  { label: "Contact Us", href: "#contact" },
 ];
 
 const Header = () => {

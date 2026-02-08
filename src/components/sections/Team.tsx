@@ -15,7 +15,7 @@ const teamMembers = [
   },
   {
     name: "Ammar Montaser",
-    role: "Director of Digital Experience",
+    role: "Head of Digital Experience",
     bio: "Building the tech behind viral campaigns",
     initials: "AM",
     image: ammarPhoto,
@@ -201,7 +201,7 @@ const Team = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            A collective of culture obsessives, meme connoisseurs, and marketing 
+            A collective of culture obsessives, content connoisseurs, and marketing 
             strategists who live and breathe the internet.
           </motion.p>
         </div>

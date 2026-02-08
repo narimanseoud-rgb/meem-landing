@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Twitter, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import ammarPhoto from "@/assets/ammar-montaser.jpeg";
 import narimanPhoto from "@/assets/nariman-seoud.jpeg";
 
@@ -11,7 +11,7 @@ const teamMembers = [
     bio: "Visionary leader driving innovation and growth",
     initials: "NS",
     image: narimanPhoto,
-    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
+    social: { linkedin: "https://www.linkedin.com/in/nariman-seoud/" },
   },
   {
     name: "Ammar Montaser",
@@ -19,21 +19,21 @@ const teamMembers = [
     bio: "Building the tech behind viral campaigns",
     initials: "AM",
     image: ammarPhoto,
-    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
+    social: { linkedin: "https://www.linkedin.com/in/ammar-montaser/" },
   },
   {
     name: "Sarah Kim",
     role: "Head of Strategy",
     bio: "Ex-Google, master of viral campaigns",
     initials: "SK",
-    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
+    social: { linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
   {
     name: "Marcus Rivera",
     role: "Lead Content Creator",
     bio: "Meme lord with 50M+ organic impressions",
     initials: "MR",
-    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
+    social: { linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
 ];
 
@@ -43,7 +43,7 @@ interface TeamMember {
   bio: string;
   initials: string;
   image?: string;
-  social: { twitter: string; linkedin: string };
+  social: { linkedin: string };
 }
 
 const TeamCard = ({ member, isInView, index }: { member: TeamMember; isInView: boolean; index: number }) => {
@@ -131,15 +131,9 @@ const TeamCard = ({ member, isInView, index }: { member: TeamMember; isInView: b
         {/* Social links */}
         <div className="flex gap-3">
           <motion.a
-            href={member.social.twitter}
-            className="w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-all"
-            whileHover={{ scale: 1.2 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Twitter className="w-3.5 h-3.5" />
-          </motion.a>
-          <motion.a
             href={member.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-8 h-8 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center text-background hover:bg-primary hover:text-primary-foreground transition-all"
             whileHover={{ scale: 1.2 }}
             onClick={(e) => e.stopPropagation()}

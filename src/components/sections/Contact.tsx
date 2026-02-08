@@ -1,9 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, Send } from "lucide-react";
+import { ArrowRight, Send, CheckCircle, Loader2 } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 import ammarPhoto from "@/assets/ammar-montaser.jpeg";
 import narimanPhoto from "@/assets/nariman-seoud.jpeg";
 
@@ -20,6 +24,20 @@ const industries = [
   "Other",
 ];
 
+const formSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
+  industry: z.string().optional(),
+  portfolio: z.string().trim().max(500, "Portfolio link must be less than 500 characters").optional(),
+  specialty: z.string().trim().max(200, "Specialty must be less than 200 characters").optional(),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xlgweybb";
+
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -28,6 +46,85 @@ const Contact = () => {
   });
   const [focused, setFocused] = useState<string | null>(null);
   const [userType, setUserType] = useState<UserType>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          userType,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        reset();
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email us directly at support@meemmedia.io",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <section ref={ref} className="relative py-32 bg-secondary overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
+              <CheckCircle className="w-10 h-10 text-primary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              Message Sent Successfully!
+            </h2>
+            <p className="text-lg text-background mb-8">
+              Thank you for reaching out. Our team will review your message and get back to you within 24 hours.
+            </p>
+            <Button
+              onClick={() => setIsSubmitted(false)}
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            >
+              Send Another Message
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={ref} className="relative py-32 bg-secondary overflow-hidden">
@@ -110,7 +207,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* User Type Selection */}
               <div className="space-y-3">
                 <label className="text-sm font-medium text-foreground">
@@ -152,11 +249,15 @@ const Contact = () => {
                 >
                   <label className="text-sm font-medium text-foreground">Name</label>
                   <Input
+                    {...register("name")}
                     placeholder="Your name"
                     className="bg-background border-border focus:border-primary transition-colors"
                     onFocus={() => setFocused("name")}
                     onBlur={() => setFocused(null)}
                   />
+                  {errors.name && (
+                    <p className="text-xs text-destructive">{errors.name.message}</p>
+                  )}
                 </motion.div>
 
                 <motion.div
@@ -166,12 +267,16 @@ const Contact = () => {
                 >
                   <label className="text-sm font-medium text-foreground">Email</label>
                   <Input
+                    {...register("email")}
                     type="email"
                     placeholder="your@email.com"
                     className="bg-background border-border focus:border-primary transition-colors"
                     onFocus={() => setFocused("email")}
                     onBlur={() => setFocused(null)}
                   />
+                  {errors.email && (
+                    <p className="text-xs text-destructive">{errors.email.message}</p>
+                  )}
                 </motion.div>
               </div>
 
@@ -190,6 +295,7 @@ const Contact = () => {
                   >
                     <label className="text-sm font-medium text-foreground">Company</label>
                     <Input
+                      {...register("company")}
                       placeholder="Your company name"
                       className="bg-background border-border focus:border-primary transition-colors"
                       onFocus={() => setFocused("company")}
@@ -206,8 +312,8 @@ const Contact = () => {
                           className="flex items-center gap-2 p-2 rounded-lg border border-border bg-background hover:border-primary/50 cursor-pointer transition-colors"
                         >
                           <input
+                            {...register("industry")}
                             type="radio"
-                            name="industry"
                             value={industry}
                             className="accent-primary"
                           />
@@ -235,6 +341,7 @@ const Contact = () => {
                       Portfolio / Social Link
                     </label>
                     <Input
+                      {...register("portfolio")}
                       placeholder="Link to your work or social profile"
                       className="bg-background border-border focus:border-primary transition-colors"
                       onFocus={() => setFocused("portfolio")}
@@ -244,16 +351,17 @@ const Contact = () => {
 
                   <motion.div
                     className="space-y-2"
-                    animate={focused === "experience" ? { scale: 1.02 } : { scale: 1 }}
+                    animate={focused === "specialty" ? { scale: 1.02 } : { scale: 1 }}
                     transition={{ duration: 0.2 }}
                   >
                     <label className="text-sm font-medium text-foreground">
                       Content Specialty
                     </label>
                     <Input
+                      {...register("specialty")}
                       placeholder="e.g., Video, Photography, Memes, etc."
                       className="bg-background border-border focus:border-primary transition-colors"
-                      onFocus={() => setFocused("experience")}
+                      onFocus={() => setFocused("specialty")}
                       onBlur={() => setFocused(null)}
                     />
                   </motion.div>
@@ -267,6 +375,7 @@ const Contact = () => {
               >
                 <label className="text-sm font-medium text-foreground">Message</label>
                 <Textarea
+                  {...register("message")}
                   placeholder={
                     userType === "creator"
                       ? "Tell us about yourself and why you want to join..."
@@ -277,16 +386,29 @@ const Contact = () => {
                   onFocus={() => setFocused("message")}
                   onBlur={() => setFocused(null)}
                 />
+                {errors.message && (
+                  <p className="text-xs text-destructive">{errors.message.message}</p>
+                )}
               </motion.div>
 
               <Button
                 type="submit"
                 size="lg"
+                disabled={isSubmitting}
                 className="w-full group bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/25 transition-all duration-300"
               >
-                <Send className="w-4 h-4 mr-2" />
-                {userType === "creator" ? "Apply Now" : "Start Your Campaign"}
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    {userType === "creator" ? "Apply Now" : "Start Your Campaign"}
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </Button>
             </form>
           </motion.div>

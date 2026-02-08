@@ -106,7 +106,7 @@ const HeroFloatingCards = () => {
   };
 
   return (
-    <section className="py-16 overflow-hidden bg-background">
+    <section id="portfolio" className="py-16 overflow-hidden bg-background">
       {/* Header */}
       <div ref={headerRef} className="text-center mb-12 px-6">
         <motion.span 

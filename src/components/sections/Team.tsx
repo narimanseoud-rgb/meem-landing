@@ -11,7 +11,7 @@ const teamMembers = [
     bio: "Visionary leader driving innovation and growth",
     initials: "NS",
     image: narimanPhoto,
-    social: { twitter: "#", linkedin: "#" },
+    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
   {
     name: "Ammar Montaser",
@@ -19,21 +19,21 @@ const teamMembers = [
     bio: "Building the tech behind viral campaigns",
     initials: "AM",
     image: ammarPhoto,
-    social: { twitter: "#", linkedin: "#" },
+    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
   {
     name: "Sarah Kim",
     role: "Head of Strategy",
     bio: "Ex-Google, master of viral campaigns",
     initials: "SK",
-    social: { twitter: "#", linkedin: "#" },
+    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
   {
     name: "Marcus Rivera",
     role: "Lead Content Creator",
     bio: "Meme lord with 50M+ organic impressions",
     initials: "MR",
-    social: { twitter: "#", linkedin: "#" },
+    social: { twitter: "#", linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
 ];
 

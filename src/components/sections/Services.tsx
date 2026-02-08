@@ -2,10 +2,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { 
   Share2, 
-  Smile, 
-  Palette, 
-  FileText, 
-  Lightbulb 
+  PenTool, 
+  BarChart3, 
+  Globe 
 } from "lucide-react";
 
 const services = [
@@ -15,24 +14,19 @@ const services = [
     description: "Strategic social media management that builds engaged communities and drives real business results across all major platforms.",
   },
   {
-    icon: Smile,
-    title: "Meme Marketing & Viral Content",
-    description: "We craft content designed to spread. Memes, trends, and cultural moments that put your brand in the conversation.",
+    icon: PenTool,
+    title: "Content Creation & Strategy",
+    description: "Compelling content and data-driven strategies that capture attention and tell your brand story across every channel.",
   },
   {
-    icon: Palette,
-    title: "Branding & Creative Direction",
-    description: "Bold visual identities and creative strategies that make your brand impossible to ignore in crowded feeds.",
+    icon: BarChart3,
+    title: "Media Buying & Performance Marketing",
+    description: "Data-driven ad campaigns that maximize ROI. We optimize every dollar to deliver measurable growth and conversions.",
   },
   {
-    icon: FileText,
-    title: "Content Strategy",
-    description: "Data-driven content planning that ensures every post, story, and video serves your bigger business goals.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Campaign Ideation",
-    description: "Big ideas that break through. We conceptualize campaigns that capture attention and drive action at scale.",
+    icon: Globe,
+    title: "Website Development",
+    description: "Custom, high-performance websites that convert visitors into customers. From landing pages to full-scale platforms.",
   },
 ];
 

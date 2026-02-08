@@ -76,7 +76,7 @@ const Footer = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            © 2026 Meme Media Hub. All rights reserved.
+            © 2026 Meem Media Hub. All rights reserved.
           </motion.p>
         </div>
       </div>

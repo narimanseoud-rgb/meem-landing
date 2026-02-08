@@ -9,7 +9,7 @@ import Team from "@/components/sections/Team";
 import CreatorCTA from "@/components/sections/CreatorCTA";
 import Services from "@/components/sections/Services";
 
-import TrustedBy from "@/components/sections/TrustedBy";
+
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
@@ -41,7 +41,6 @@ const Index = () => {
       <section id="services">
         <Services />
       </section>
-      <TrustedBy />
       <section id="contact">
         <Contact />
       </section>

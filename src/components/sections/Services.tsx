@@ -10,8 +10,8 @@ import {
 const services = [
   {
     icon: Share2,
-    title: "Social Media Marketing",
-    description: "Strategic social media management that builds engaged communities and drives real business results across all major platforms.",
+    title: "Social Media Marketing & Management",
+    description: "From content creation to full account management, we help your brand show up consistently, creatively, and always on point—without chasing trends or posts.",
   },
   {
     icon: PenTool,
@@ -21,12 +21,12 @@ const services = [
   {
     icon: BarChart3,
     title: "Media Buying & Performance Marketing",
-    description: "Data-driven ad campaigns that maximize ROI. We optimize every dollar to deliver measurable growth and conversions.",
+    description: "We plan, launch, and optimize your ad campaigns across platforms to reach your target audience and maximize conversions.",
   },
   {
     icon: Globe,
     title: "Website Development",
-    description: "Custom, high-performance websites that convert visitors into customers. From landing pages to full-scale platforms.",
+    description: "Custom personal websites, portfolios, and landing pages that convert visitors into customers with stunning design and performance.",
   },
 ];
 
@@ -73,17 +73,18 @@ const Services = () => {
           </motion.p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Services grid - centered when incomplete row */}
+        <div className="flex flex-wrap justify-center gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="group relative p-8 bg-background rounded-2xl border border-foreground/20 hover:border-foreground/50 transition-all duration-500 overflow-hidden"
+              className="group relative p-8 bg-background rounded-2xl border-2 border-transparent hover:border-foreground/40 transition-all duration-500 overflow-hidden w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
               whileHover={{ 
                 y: -8,
+                scale: 1.02,
                 transition: { duration: 0.3 }
               }}
             >

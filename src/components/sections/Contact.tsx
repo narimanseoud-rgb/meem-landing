@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Send } from "lucide-react";
 import ammarPhoto from "@/assets/ammar-montaser.jpeg";
+import narimanPhoto from "@/assets/nariman-seoud.jpeg";
 
 type UserType = "brand" | "creator" | "";
 
@@ -86,8 +87,8 @@ const Contact = () => {
             >
               <div className="flex -space-x-2">
                 <img
-                  src="/nariman-sarud.png"
-                  alt="Nariman Sarud"
+                  src={narimanPhoto}
+                  alt="Nariman Seoud"
                   className="w-10 h-10 rounded-full border-2 border-background object-cover"
                 />
                 <img

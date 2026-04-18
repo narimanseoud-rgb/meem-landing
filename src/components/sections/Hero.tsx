@@ -26,7 +26,7 @@ const socialLinks = [{
   label: "Phone"
 }];
 const Hero = () => {
-  return <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden dark bg-[hsl(0,0%,8%)] pt-10 md:pt-10">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden dark bg-[hsl(0,0%,8%)] pt-16 md:pt-20">
       {/* Video background */}
       <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
         <source src={heroVideo} type="video/mp4" />

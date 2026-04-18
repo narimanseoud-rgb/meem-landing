@@ -30,6 +30,9 @@ const Index = () => {
       <ScrollingText words={topScrollingWords} direction="left" />
       <HeroFloatingCards />
       <ScrollingText words={bottomScrollingWords} direction="right" />
+      <section id="campaigns">
+        <Campaigns />
+      </section>
       <section id="about">
         <About />
         <Team />
@@ -37,9 +40,6 @@ const Index = () => {
       <CreatorCTA />
       <section id="services">
         <Services />
-      </section>
-      <section id="campaigns">
-        <Campaigns />
       </section>
       <section id="contact">
         <Contact />

@@ -5,27 +5,66 @@ import { ExternalLink } from "lucide-react";
 const projects = [
   {
     id: 1,
-    brand: "Hype",
+    brand: "Hype App",
     description:
-      "Ongoing creative work across reels, social content, graphic design, and digital assets for a bold social networking app targeting younger audiences.",
-    category: "Content & Social",
+      "Brand and product website for Hype, a social networking app built around hangouts, discovery, and real-world connection for young people in Cairo.",
+    category: "Website",
     color: "from-blue-500/20 to-purple-500/20",
+    href: "https://www.hypeapp.me/",
   },
   {
     id: 2,
-    brand: "Hype Website Work",
+    brand: "Hype Partners",
     description:
-      "Website and digital execution designed to support Hype’s positioning, user experience, and overall brand presence online.",
-    category: "Web Experience",
+      "Partner-facing digital experience for Hype, supporting venue and business-side collaboration around the platform’s local ecosystem.",
+    category: "Partner Platform",
     color: "from-green-500/20 to-emerald-500/20",
+    href: "https://partners.hypeapp.me/",
   },
   {
     id: 3,
-    brand: "Brand One-Offs",
+    brand: "Maz Developments",
     description:
-      "Selected one-off creative and digital projects developed for brands outside Meem’s current client roster.",
-    category: "Selected Work",
+      "Real estate website work for a premium property brand in Jeddah, showing Meem’s ability to build clean, polished digital experiences beyond social content.",
+    category: "Website",
     color: "from-yellow-500/20 to-orange-500/20",
+    href: "https://mazsa9.com/",
+  },
+  {
+    id: 4,
+    brand: "Instagram Content 01",
+    description:
+      "Live social content example shared by the team. To be upgraded with final thumbnails, captions, and context once the content library is organized.",
+    category: "Social Content",
+    color: "from-pink-500/20 to-rose-500/20",
+    href: "https://www.instagram.com/p/DTvUA6fCO3L/?img_index=1",
+  },
+  {
+    id: 5,
+    brand: "Instagram Content 02",
+    description:
+      "Another live content example currently used as proof of execution, pending richer case-study formatting and asset-specific labeling.",
+    category: "Social Content",
+    color: "from-indigo-500/20 to-violet-500/20",
+    href: "https://www.instagram.com/p/DTYAf5HiOvX/?img_index=1",
+  },
+  {
+    id: 6,
+    brand: "Instagram Content 03",
+    description:
+      "Active post link included as part of Meem’s current proof set. This will be refined into a stronger portfolio presentation in the next content pass.",
+    category: "Social Content",
+    color: "from-teal-500/20 to-cyan-500/20",
+    href: "https://www.instagram.com/p/DOG78lyiJxF/",
+  },
+  {
+    id: 7,
+    brand: "Instagram Content 04",
+    description:
+      "Additional social proof entry showing real live work. Best used for now as clickable proof until the full content case-study system is designed.",
+    category: "Social Content",
+    color: "from-red-500/20 to-orange-500/20",
+    href: "https://www.instagram.com/p/DSvVIPpALYe/",
   },
 ];
 
@@ -55,8 +94,8 @@ const Portfolio = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <span className="text-primary-foreground">Selected Work </span>
-            <span className="text-primary">In Progress</span>
+            <span className="text-primary-foreground">Work We’ve </span>
+            <span className="text-primary">Actually Built</span>
           </motion.h2>
 
           <motion.p
@@ -65,18 +104,21 @@ const Portfolio = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We’re building this section with real work, not filler. For now, this is a snapshot of the projects Meem is actively shaping, with more case studies and links to be added.
+            A growing set of live websites and content examples from Meem’s current and past work. This section now prioritizes real links over polished filler, and we’ll keep upgrading it into stronger case studies.
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={project.id}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer block"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1 + index * 0.08 }}
               whileHover={{ scale: 1.02 }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${project.color} bg-card`} />
@@ -85,7 +127,7 @@ const Portfolio = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,136,0,0.1)_0%,transparent_50%)]" />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-500" />
 
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
                 <motion.div
@@ -110,7 +152,7 @@ const Portfolio = () => {
                   <ExternalLink className="w-4 h-4 text-primary" />
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
 
@@ -120,7 +162,7 @@ const Portfolio = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.35 }}
         >
-          Once you share the URLs, I’ll turn these into proper linked case studies with real visuals, reels, and websites.
+          Next upgrade: I can turn these into richer case studies with proper labels like reels, branding, websites, partner platforms, and one-off projects once we map each link to its exact role.
         </motion.p>
       </div>
     </section>

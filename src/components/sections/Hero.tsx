@@ -63,7 +63,7 @@ const Hero = () => {
 
 
       {/* Overlay logo at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10">
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-0 opacity-40">
         <img src={meemCover} alt="" className="w-full h-auto object-cover" />
       </div>
 

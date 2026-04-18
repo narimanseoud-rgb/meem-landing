@@ -7,7 +7,7 @@ import About from "@/components/sections/About";
 import Team from "@/components/sections/Team";
 import CreatorCTA from "@/components/sections/CreatorCTA";
 import Services from "@/components/sections/Services";
-import WorkBuilt from "@/components/sections/WorkBuilt";
+import Campaigns from "@/components/sections/Campaigns";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
@@ -38,8 +38,8 @@ const Index = () => {
       <section id="services">
         <Services />
       </section>
-      <section id="work-built">
-        <WorkBuilt />
+      <section id="campaigns">
+        <Campaigns />
       </section>
       <section id="contact">
         <Contact />

@@ -26,7 +26,7 @@ const socialLinks = [{
   label: "Phone"
 }];
 const Hero = () => {
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden dark bg-[hsl(0,0%,8%)] pt-16 md:pt-20">
+  return <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden dark bg-[hsl(0,0%,8%)] pt-10 md:pt-10">
       {/* Video background */}
       <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
         <source src={heroVideo} type="video/mp4" />
@@ -106,7 +106,7 @@ const Hero = () => {
         duration: 0.8,
         ease: "easeOut"
       }}>
-          We turn culture into growth, and brands into something people remember.
+          We turn culture into growth, and brands into memories.
         </motion.h1>
 
         <motion.p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-primary-foreground" initial={{

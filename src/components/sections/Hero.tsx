@@ -14,7 +14,7 @@ const socialLinks = [{
   label: "Facebook"
 }, {
   icon: Mail,
-  href: "mailto:hello@mememediahub.com",
+  href: "mailto:info@meemmedia.io",
   label: "Email"
 }, {
   icon: Linkedin,
@@ -83,7 +83,7 @@ const Hero = () => {
         duration: 0.8,
         ease: "easeOut"
       }} className="mb-8">
-          <motion.img src={meemTextLogo} alt="Meme Media Hub" className="h-8 md:h-10 lg:h-12 w-auto mx-auto" initial={{
+          <motion.img src={meemTextLogo} alt="Meem Media" className="h-8 md:h-10 lg:h-12 w-auto mx-auto" initial={{
           opacity: 0,
           scale: 0.8
         }} animate={{
@@ -95,7 +95,21 @@ const Hero = () => {
         }} />
         </motion.div>
 
-        <motion.p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-primary-foreground" initial={{
+        <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto mb-6 text-white leading-tight" initial={{
+        opacity: 0,
+        y: 30
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        delay: 0.55,
+        duration: 0.8,
+        ease: "easeOut"
+      }}>
+          We turn culture into growth, and brands into something people remember.
+        </motion.h1>
+
+        <motion.p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-primary-foreground" initial={{
         opacity: 0,
         y: 30
       }} animate={{
@@ -106,8 +120,7 @@ const Hero = () => {
         duration: 0.8,
         ease: "easeOut"
       }}>
-          We're not your average agency. We speak internet, breathe memes, and craft campaigns that break through the
-          noise. Welcome to marketing that actually moves the culture.
+          Meem Media blends strategy, content, creators, and digital execution to help brands stay current, stand out, and grow with intention.
         </motion.p>
       </div>
 

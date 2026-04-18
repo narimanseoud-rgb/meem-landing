@@ -36,12 +36,12 @@ const Footer = () => {
           >
             <img 
               src={meemLogo} 
-              alt="Meme Media Hub Logo" 
+              alt="Meem Media Logo" 
               className="h-10 w-auto brightness-0 invert"
             />
             <img 
               src={meemTextLogo} 
-              alt="Meme Media Hub" 
+              alt="Meem Media" 
               className="h-6 w-auto brightness-0 invert"
             />
           </motion.div>
@@ -76,7 +76,7 @@ const Footer = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            © 2026 Meem Media Hub. All rights reserved.
+            © 2026 Meem Media. All rights reserved.
           </motion.p>
         </div>
       </div>

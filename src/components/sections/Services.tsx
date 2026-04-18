@@ -9,24 +9,24 @@ import {
 
 const services = [
   {
-    icon: Share2,
-    title: "Social Media Marketing & Management",
-    description: "From content creation to full account management, we help your brand show up consistently, creatively, and always on point—without chasing trends or posts.",
+    icon: PenTool,
+    title: "Branding & Positioning",
+    description: "We shape how your brand looks, feels, and shows up in the market, building clarity, consistency, and a presence people remember.",
   },
   {
-    icon: PenTool,
-    title: "Content Creation & Strategy",
-    description: "Compelling content and data-driven strategies that capture attention and tell your brand story across every channel.",
+    icon: Share2,
+    title: "Content & Social",
+    description: "From strategy to execution, we create platform-native content, reels, and social systems that keep your brand current and performing.",
   },
   {
     icon: BarChart3,
-    title: "Media Buying & Performance Marketing",
-    description: "We plan, launch, and optimize your ad campaigns across platforms to reach your target audience and maximize conversions.",
+    title: "Creator & Campaign Strategy",
+    description: "We source the right voices, build smart collaborations, and manage campaigns that feel culturally relevant and commercially sharp.",
   },
   {
     icon: Globe,
-    title: "Website Development",
-    description: "Custom personal websites, portfolios, and landing pages that convert visitors into customers with stunning design and performance.",
+    title: "Web Design & Development",
+    description: "We build clean, conversion-focused websites and landing pages that translate your brand into a seamless digital experience.",
   },
 ];
 
@@ -57,8 +57,8 @@ const Services = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <span className="text-background">Services That </span>
-            <span className="text-foreground">Move Culture</span>
+            <span className="text-background">What We Build </span>
+            <span className="text-foreground">For Growth</span>
           </motion.h2>
 
           <motion.p
@@ -67,9 +67,7 @@ const Services = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            From strategy to execution, we offer end-to-end marketing solutions 
-            designed for the digital age. Every service is built around one goal: 
-            making your brand unforgettable.
+            Our work sits across brand, content, creators, and digital execution. Every service is designed to help your business stay relevant, show up clearly, and grow with direction.
           </motion.p>
         </div>
 

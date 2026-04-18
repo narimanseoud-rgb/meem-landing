@@ -162,8 +162,8 @@ const Contact = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <span className="text-primary-foreground">Let's Build </span>
-              <span className="text-primary">Something Viral</span>
+              <span className="text-primary-foreground">Let’s Build </span>
+              <span className="text-primary">Something Memorable</span>
             </motion.h2>
 
             <motion.p
@@ -172,9 +172,7 @@ const Contact = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Ready to break through the noise? Whether you're a brand looking for viral campaigns
-              or a creator wanting to join our community, we'd love to hear from you.
-              We typically respond within 24 hours.
+              If you’re building a brand that needs sharper positioning, stronger content, better creators, or a clearer digital presence, we’d love to hear from you. We typically respond within 24 hours.
             </motion.p>
 
             <motion.div
@@ -422,7 +420,7 @@ const Contact = () => {
                 ) : (
                   <>
                     <Send className="w-4 h-4 mr-2" />
-                    {userType === "creator" ? "Apply Now" : "Start Your Campaign"}
+                    {userType === "creator" ? "Apply Now" : "Start Your Project"}
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}

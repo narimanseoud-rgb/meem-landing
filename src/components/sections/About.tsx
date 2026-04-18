@@ -46,8 +46,8 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}} 
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <span className="text-primary">We Target the </span>
-            <span className="text-background font-black">Right Clients</span>
+            <span className="text-primary">Seen is easy. </span>
+            <span className="text-background font-black">Remembered is hard.</span>
           </motion.h2>
 
           <motion.p 
@@ -56,9 +56,7 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}} 
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Meem Media was born from a simple truth: traditional marketing 
-            doesn't cut it anymore. In a world where attention is the new currency, 
-            you need a team that understands how culture really works online.
+            Meem Media is a forward-thinking marketing agency built to shape how brands are seen, experienced, and remembered. We combine cultural instinct with strategic execution to help businesses earn the right attention and turn it into real growth.
           </motion.p>
         </div>
       </div>

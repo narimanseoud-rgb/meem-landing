@@ -35,7 +35,7 @@ const Header = () => {
           >
             <img 
               src={meemLogo} 
-              alt="Meme Media Hub Logo" 
+              alt="Meem Media Logo" 
               className="h-12 w-auto blur-[0.5px]"
             />
           </a>
@@ -69,7 +69,7 @@ const Header = () => {
               className="relative bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/40 transition-all duration-300 overflow-hidden group"
             >
               <a href="#contact">
-                <span className="relative z-10">Start Project</span>
+                <span className="relative z-10">Start Your Project</span>
                 {/* Animated glow effect */}
                 <motion.span 
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"

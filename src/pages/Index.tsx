@@ -32,7 +32,9 @@ const Index = () => {
       <section id="campaigns">
         <Campaigns />
       </section>
-      <ScrollingText words={topScrollingWords} direction="left" />
+      <div className="-mt-4 md:-mt-6">
+        <ScrollingText words={topScrollingWords} direction="left" />
+      </div>
       <section id="about">
         <About />
         <Team />

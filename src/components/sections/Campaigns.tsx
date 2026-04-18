@@ -80,11 +80,11 @@ const Campaigns = () => {
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} bg-card`} />
               )}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-85 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-transparent opacity-95 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
                 <motion.div
-                  className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300"
+                  className="transform translate-y-12 group-hover:translate-y-0 transition-transform duration-400"
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
@@ -97,7 +97,7 @@ const Campaigns = () => {
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                  <p className="text-sm text-white opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-300 mt-3">
                     {project.description}
                   </p>
                 </motion.div>

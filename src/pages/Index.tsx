@@ -2,13 +2,12 @@ import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
 
 import ScrollingText from "@/components/sections/ScrollingText";
-import UGCSection from "@/components/sections/UGCSection";
 import HeroFloatingCards from "@/components/sections/HeroFloatingCards";
 import About from "@/components/sections/About";
 import Team from "@/components/sections/Team";
 import CreatorCTA from "@/components/sections/CreatorCTA";
 import Services from "@/components/sections/Services";
-import Campaigns from "@/components/sections/Campaigns";
+import WorkBuilt from "@/components/sections/WorkBuilt";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
@@ -28,7 +27,6 @@ const Index = () => {
     <main>
       <Header />
       <Hero />
-      <UGCSection />
       <ScrollingText words={topScrollingWords} direction="left" />
       <HeroFloatingCards />
       <ScrollingText words={bottomScrollingWords} direction="right" />
@@ -40,8 +38,8 @@ const Index = () => {
       <section id="services">
         <Services />
       </section>
-      <section id="campaigns">
-        <Campaigns />
+      <section id="work-built">
+        <WorkBuilt />
       </section>
       <section id="contact">
         <Contact />

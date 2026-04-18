@@ -95,7 +95,7 @@ const Hero = () => {
         }} />
         </motion.div>
 
-        <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold max-w-5xl mx-auto mb-6 text-white leading-tight" initial={{
+        <motion.h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-5xl mx-auto mb-6 text-white leading-tight" initial={{
         opacity: 0,
         y: 30
       }} animate={{

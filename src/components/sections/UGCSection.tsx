@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import ugcPhoneVideo from "@/assets/ugc-phone-video.mp4";
 
 const stats = [
-  "350+ UGC Pieces Created – We create content that performs.",
-  "250+ Professional Creators – Handpicked experts.",
-  "150% Increase in Click-through Rates",
-  "50% Lower Cost per Click",
+  "Platform-native reels, UGC, and short-form content built for attention and action.",
+  "Creator-led execution shaped around the brand, not forced trends.",
+  "Content systems designed to help brands stay current and consistent.",
+  "Creative built to support growth, trust, and stronger market presence.",
 ];
 
 const UGCSection = () => {
@@ -33,7 +33,7 @@ const UGCSection = () => {
               transition={{ duration: 0.6 }}
             >
               <Zap className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Smart Marketing</span>
+              <span className="text-sm font-medium text-primary">Content & Creators</span>
             </motion.div>
 
             {/* Headline */}
@@ -43,9 +43,9 @@ const UGCSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <span className="text-foreground italic">Attract & Convert </span>
-              <span className="text-foreground italic">Competitor Traffic with </span>
-              <span className="text-primary italic">Authentic UGC</span>
+              <span className="text-foreground italic">Content that feels </span>
+              <span className="text-foreground italic">native to the platform, </span>
+              <span className="text-primary italic">not forced for the algorithm.</span>
             </motion.h2>
 
             {/* Description */}
@@ -55,7 +55,7 @@ const UGCSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Your products deserve the spotlight! The right UGC strategy boosts your brand, drives conversions, and builds trust!
+              Meem develops reels, UGC, and creator-led content that helps brands show up with more relevance, more clarity, and a stronger chance of being remembered.
             </motion.p>
 
             {/* Stats list */}
@@ -87,8 +87,8 @@ const UGCSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button size="lg" className="px-8 py-6 text-base font-semibold">
-                GET STARTED
+              <Button asChild size="lg" className="px-8 py-6 text-base font-semibold">
+                <a href="#contact">START YOUR PROJECT</a>
               </Button>
             </motion.div>
           </motion.div>
@@ -129,8 +129,8 @@ const UGCSection = () => {
                 animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                <div className="text-2xl md:text-3xl font-bold text-primary-foreground">100%</div>
-                <div className="text-xs text-primary-foreground/80">Increase in revenues</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary-foreground">UGC</div>
+                <div className="text-xs text-primary-foreground/80">Creator-led content for modern brands</div>
               </motion.div>
 
               <motion.div
@@ -139,8 +139,8 @@ const UGCSection = () => {
                 animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.7 }}
               >
-                <div className="text-2xl md:text-3xl font-bold text-primary-foreground">150%</div>
-                <div className="text-xs text-primary-foreground/80">Increase in Click-through Rates</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary-foreground">REELS</div>
+                <div className="text-xs text-primary-foreground/80">Short-form creative built for relevance</div>
               </motion.div>
             </div>
           </motion.div>

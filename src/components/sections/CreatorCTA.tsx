@@ -87,7 +87,7 @@ const CreatorCTA = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            Are you a creator?
+            Creator network, built with intention.
           </motion.h2>
 
           <motion.h3
@@ -96,7 +96,7 @@ const CreatorCTA = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            Turn your creativity into cash!
+            We work with creators who know how to make brands feel current.
           </motion.h3>
 
           <motion.p
@@ -105,7 +105,7 @@ const CreatorCTA = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Join our community of content creators, & start your UGC career now!
+            If you create strong content, understand internet culture, and want to work on campaigns that actually move brands forward, we’d love to hear from you.
           </motion.p>
 
           <motion.div
@@ -119,7 +119,7 @@ const CreatorCTA = () => {
               size="lg"
               className="px-10 py-6 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              <a href="#contact">GET STARTED</a>
+              <a href="#contact">JOIN THE NETWORK</a>
             </Button>
           </motion.div>
         </div>

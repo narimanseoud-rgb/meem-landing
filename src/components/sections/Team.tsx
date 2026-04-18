@@ -8,32 +8,18 @@ const teamMembers = [
   {
     name: "Nariman Seoud",
     role: "Founder & CEO",
-    bio: "Visionary leader driving innovation and growth",
+    bio: "Leads Meem Media’s growth, positioning, and client direction across brand, content, and business development.",
     initials: "NS",
     image: narimanPhoto,
     social: { linkedin: "https://www.linkedin.com/in/nariman-seoud/" },
   },
   {
     name: "Ammar Montaser",
-    role: "Head of Digital Experience",
-    bio: "Building the tech behind viral campaigns",
+    role: "Digital Experience & Development",
+    bio: "Builds the digital systems behind Meem’s websites, creative execution, and online brand experiences.",
     initials: "AM",
     image: ammarPhoto,
     social: { linkedin: "https://www.linkedin.com/in/ammar-montaser/" },
-  },
-  {
-    name: "Sarah Kim",
-    role: "Head of Strategy",
-    bio: "Ex-Google, master of viral campaigns",
-    initials: "SK",
-    social: { linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
-  },
-  {
-    name: "Marcus Rivera",
-    role: "Lead Content Creator",
-    bio: "Meme lord with 50M+ organic impressions",
-    initials: "MR",
-    social: { linkedin: "https://www.linkedin.com/company/meem-media-hub/" },
   },
 ];
 
@@ -177,7 +163,7 @@ const Team = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              The Minds Behind{" "}
+              The People Behind{" "}
             </motion.span>
             <motion.span 
               className="text-primary inline-block"
@@ -185,7 +171,7 @@ const Team = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              The Magic
+              Meem Media
             </motion.span>
           </motion.h2>
 
@@ -195,13 +181,12 @@ const Team = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            A collective of culture obsessives, content connoisseurs, and marketing 
-            strategists who live and breathe the internet.
+            A lean team building Meem Media at the intersection of strategy, culture, content, and digital execution.
           </motion.p>
         </div>
 
         {/* Team grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => (
             <TeamCard 
               key={member.name} 

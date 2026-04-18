@@ -80,23 +80,24 @@ const Campaigns = () => {
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} bg-card`} />
               )}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-85 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
                 <motion.div
+                  className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300"
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20">
+                  <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-white bg-white/10 rounded-full border border-white/20">
                     {project.category}
                   </span>
 
-                  <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-muted-foreground opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                  <p className="text-sm text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                     {project.description}
                   </p>
                 </motion.div>

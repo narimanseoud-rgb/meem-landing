@@ -27,12 +27,12 @@ const Index = () => {
     <main>
       <Header />
       <Hero />
-      <ScrollingText words={topScrollingWords} direction="left" />
       <HeroFloatingCards />
       <ScrollingText words={bottomScrollingWords} direction="right" />
       <section id="campaigns">
         <Campaigns />
       </section>
+      <ScrollingText words={topScrollingWords} direction="left" />
       <section id="about">
         <About />
         <Team />
